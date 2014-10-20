@@ -38,7 +38,7 @@ void GenItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
     }
     painter->drawEllipse(QRectF(0,0,2*_radius, 2*_radius));
     painter->setFont(font);
-    painter->drawText(QRectF(0,0,2*_radius, 2*_radius),Qt::AlignCenter, "G");
+    painter->drawText(QRectF(0,0,2*_radius, 2*_radius),Qt::AlignCenter, "");
 
 
 }

@@ -95,7 +95,7 @@ private:
     qreal Y4;
     const static qreal X5=850;
     const static qreal Y5=600;
-    const static qreal hUnit=4;
+    const static qreal hUnit=5;
     qreal wUnit;
     qreal yUnit;
     qreal xUnit;

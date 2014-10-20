@@ -673,7 +673,7 @@ void System118_Widget::initScene_bus()
     busItems.append(new BusItem(X3+8*xUnit,9*yUnit,wUnit,hUnit));
     busItems.append(new BusItem(X3+8.3*xUnit,Y1+4*yUnit,wUnit,hUnit));
 
-    busItems.append(new BusItem(X3+7.8*xUnit,Y1+5*yUnit,hUnit,wUnit));
+    busItems.append(new BusItem(X3+7.9*xUnit,Y1+5*yUnit,hUnit,wUnit));
     busItems.append(new BusItem(X4,Y1+6.5*yUnit,hUnit,wUnit));
     busItems.append(new BusItem(X4+0.5*xUnit,Y1+3*yUnit,wUnit,hUnit));
     busItems.append(new BusItem(X4+1.5*xUnit,Y1+8*yUnit,3*wUnit,hUnit));
@@ -774,34 +774,33 @@ void System118_Widget::initScene_bus()
     lineItems.append(new LineItem(QPointF(2*xUnit,2.5*yUnit),QPointF(2*xUnit,3*yUnit),
                                   QPointF(4.5*xUnit,3*yUnit),QPointF(4.5*xUnit,2.5*yUnit)));
     lineItems.append(new LineItem(QPointF(1.5*xUnit,2.5*yUnit),QPointF(1.5*xUnit,5*yUnit)));
-    lineItems.append(new LineItem(QPointF(3*xUnit,7*yUnit),QPointF(3*xUnit,Y1+2*yUnit)));
-    lineItems.append(new LineItem(QPointF(2*xUnit,5*yUnit),QPointF(2*xUnit,Y1+2*yUnit)
-                                  ));
-    lineItems.append(new LineItem(QPointF(5*xUnit,Y1+2*yUnit),QPointF(5*xUnit,Y1+3*yUnit),
-                                  QPointF(6.3*xUnit,Y1+3*yUnit),QPointF(6.3*xUnit,Y1+2*yUnit)
+    lineItems.append(new LineItem(QPointF(3*xUnit,7.5*yUnit),QPointF(3*xUnit,Y1+2*yUnit)));
+    lineItems.append(new LineItem(QPointF(2*xUnit,5.5*yUnit),QPointF(2*xUnit,Y1+2*yUnit)));
+    lineItems.append(new LineItem(QPointF(5*xUnit,Y1+2.5*yUnit),QPointF(5*xUnit,Y1+3.5*yUnit),
+                                  QPointF(6.8*xUnit,Y1+3.5*yUnit),QPointF(6.8*xUnit,Y1+2.5*yUnit)
                                   ));
     /* Line 6-10 */
-    lineItems.append(new LineItem(QPointF(7.5*xUnit,Y1+2*yUnit),QPointF(7.5*xUnit,Y1+3*yUnit),
-                                  QPointF(8.8*xUnit,Y1+3*yUnit),QPointF(8.8*xUnit,Y1+2*yUnit)));
-    lineItems.append(new LineItem(QPointF(4*xUnit,Y2),QPointF(4*xUnit,Y2+4*yUnit)));
-    lineItems.append(new LineItem(QPointF(4*xUnit,Y2),QPointF(4*xUnit,Y1+2*yUnit)));
-    lineItems.append(new LineItem(QPointF(4*xUnit,Y2+4*yUnit),QPointF(4*xUnit,Y2+7*yUnit)));
-    lineItems.append(new LineItem(QPointF(4*xUnit,7*yUnit),QPointF(4*xUnit,8*yUnit),
-                                  QPointF(6*xUnit,8*yUnit), QPointF(6*xUnit,7*yUnit)));
+    lineItems.append(new LineItem(QPointF(7.5*xUnit,Y1+2.5*yUnit),QPointF(7.5*xUnit,Y1+3*yUnit),
+                                  QPointF(8.8*xUnit,Y1+3*yUnit),QPointF(8.8*xUnit,Y1+2.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(4*xUnit,Y2+0.5*yUnit),QPointF(4*xUnit,Y2+4*yUnit)));
+    lineItems.append(new LineItem(QPointF(4*xUnit,Y2),QPointF(4*xUnit,Y1+2.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(4*xUnit,Y2+4.5*yUnit),QPointF(4*xUnit,Y2+7*yUnit)));
+    lineItems.append(new LineItem(QPointF(4*xUnit,7.5*yUnit),QPointF(4*xUnit,8*yUnit),
+                                  QPointF(6*xUnit,8*yUnit), QPointF(6*xUnit,7.5*yUnit)));
     /* Line 11-15 */
     lineItems.append(new LineItem(QPointF(5*xUnit,Y1+2*yUnit),QPointF(5*xUnit,9*yUnit),
-                                  QPointF(6.5*xUnit,9*yUnit),QPointF(6.5*xUnit,7*yUnit)));
-    lineItems.append(new LineItem(QPointF(8*xUnit,7*yUnit),QPointF(8*xUnit,8*yUnit),
+                                  QPointF(6.5*xUnit,9*yUnit),QPointF(6.5*xUnit,7.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(8*xUnit,7.5*yUnit),QPointF(8*xUnit,8*yUnit),
                                   QPointF(9.5*xUnit,8*yUnit),QPointF(9.5*xUnit,6*yUnit)));
-    lineItems.append(new LineItem(QPointF(5.5*xUnit,2*yUnit),QPointF(5.5*xUnit,3*yUnit),
+    lineItems.append(new LineItem(QPointF(5.5*xUnit,2.5*yUnit),QPointF(5.5*xUnit,3*yUnit),
                                   QPointF(X1+0.5*xUnit,3*yUnit),QPointF(X1+0.5*xUnit,5.5*yUnit)));
     lineItems.append(new LineItem(QPointF(4*xUnit,5*yUnit),QPointF(4*xUnit,4*yUnit),
                                   QPointF(X1,4*yUnit),QPointF(X1,5.5*yUnit)));
 
-    lineItems.append(new LineItem(QPointF(X1-0.5*xUnit,Y1+2*yUnit),QPointF(X1-0.5*xUnit,Y1+3*yUnit),
+    lineItems.append(new LineItem(QPointF(X1-0.5*xUnit,Y1+2.5*yUnit),QPointF(X1-0.5*xUnit,Y1+3*yUnit),
                                   QPointF(X1+0.5*xUnit,Y1+3*yUnit),QPointF(X1+0.5*xUnit,5.5*yUnit)));
     /* Line 16-20 */
-    lineItems.append(new LineItem(QPointF(7.5*xUnit,7*yUnit),QPointF(7.5*xUnit,9*yUnit),
+    lineItems.append(new LineItem(QPointF(7.5*xUnit,7.5*yUnit),QPointF(7.5*xUnit,9*yUnit),
                                   QPointF(X1+3.5*xUnit,9*yUnit),QPointF(X1+3.5*xUnit,Y1+yUnit)));
     lineItems.append(new LineItem(QPointF(X1+2*xUnit,5.5*yUnit),QPointF(X1+2*xUnit,7*yUnit),
                                   QPointF(X1+5.5*xUnit,7*yUnit),QPointF(X1+5.5*xUnit,8.5*yUnit)));
@@ -809,22 +808,22 @@ void System118_Widget::initScene_bus()
                                   QPointF(X1+6.5*xUnit,Y1),QPointF(X1+6.5*xUnit,Y1+yUnit)));
     lineItems.append(new LineItem(QPointF(X1+7*xUnit,8.5*yUnit),QPointF(X1+7*xUnit,Y1+yUnit)));
 
-    lineItems.append(new LineItem(QPointF(X1+1.5*xUnit,5.5*yUnit),QPointF(X1+1.5*xUnit,Y1+4*yUnit),
-                                  QPointF(X1+0.5*xUnit,Y1+4*yUnit)));
+    lineItems.append(new LineItem(QPointF(X1+1.5*xUnit,6*yUnit),QPointF(X1+1.5*xUnit,Y1+4*yUnit),
+                                  QPointF(X1+xUnit,Y1+4*yUnit)));
     /* Line 21-25 */
-    lineItems.append(new LineItem(QPointF(X1+6.5*xUnit,Y1+yUnit),QPointF(X1+6.5*xUnit,Y1+7*yUnit)));
+    lineItems.append(new LineItem(QPointF(X1+6.5*xUnit,Y1+1.5*yUnit),QPointF(X1+6.5*xUnit,Y1+7*yUnit)));
     lineItems.append(new LineItem(QPointF(X1+0.5*xUnit,Y1+5*yUnit),QPointF(X1+5.5*xUnit,Y1+5*yUnit),
                                   QPointF(X1+5.5*xUnit,Y1+7*yUnit)));
-    lineItems.append(new LineItem(QPointF(X1+6.5*xUnit,Y1+7*yUnit),QPointF(X1+6.5*xUnit,Y1+8*yUnit),
-                                  QPointF(X1+9*xUnit,Y1+8*yUnit),QPointF(X1+9*xUnit,Y1+7*yUnit)));
-    lineItems.append(new LineItem(QPointF(X2,Y1+7*yUnit),QPointF(X2,Y1+5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X1+6.5*xUnit,Y1+7.5*yUnit),QPointF(X1+6.5*xUnit,Y1+8*yUnit),
+                                  QPointF(X1+9*xUnit,Y1+8*yUnit),QPointF(X1+9*xUnit,Y1+7.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X2,Y1+7*yUnit),QPointF(X2,Y1+5.5*yUnit)));
 
-    lineItems.append(new LineItem(QPointF(X2+xUnit,Y1+5*yUnit),QPointF(X2+xUnit,Y2+1.5*yUnit),
-                                  QPointF(X2,Y2+1.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X2+xUnit,Y1+5.5*yUnit),QPointF(X2+xUnit,Y2+1.5*yUnit),
+                                  QPointF(X2+0.5*xUnit,Y2+1.5*yUnit)));
     /* Line 26-30 */
     lineItems.append(new LineItem(QPointF(X1+8.5*xUnit,Y1+yUnit),QPointF(X1+8.5*xUnit,Y1+2.5*yUnit),
                                   QPointF(X2+2*xUnit,Y1+2.5*yUnit),QPointF(X2+2*xUnit,Y1+5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X2,Y2+3*yUnit),QPointF(X2+xUnit,Y2+3*yUnit),
+    lineItems.append(new LineItem(QPointF(X2+0.5*xUnit,Y2+3*yUnit),QPointF(X2+xUnit,Y2+3*yUnit),
                                   QPointF(X2+xUnit,Y2+5*yUnit)));
     lineItems.append(new LineItem(QPointF(X2+xUnit,Y2+5*yUnit),QPointF(X2+xUnit,Y2+7*yUnit),
                                   QPointF(X2+1.5*xUnit,Y2+7*yUnit)));
@@ -832,24 +831,24 @@ void System118_Widget::initScene_bus()
                                   QPointF(X2+xUnit,Y3)));
 
     lineItems.append(new LineItem(QPointF(X2+2.5*xUnit,Y3),QPointF(X2+2.5*xUnit,Y2+9*yUnit),
-                                  QPointF(X2+7.5*xUnit,Y2+9*yUnit),QPointF(X2+7.5*xUnit,Y2+8*yUnit)));
+                                  QPointF(X2+7.5*xUnit,Y2+9*yUnit),QPointF(X2+7.5*xUnit,Y2+8.5*yUnit)));
     /* Line 31-35 */
-    lineItems.append(new LineItem(QPointF(X2+2*xUnit,Y3),QPointF(X2+2*xUnit,Y3+4*yUnit)));
-    lineItems.append(new LineItem(QPointF(X1+6.5*xUnit,Y3+yUnit),QPointF(X1+6.5*xUnit,Y3+4*yUnit)));
-    lineItems.append(new LineItem(QPointF(X1+5.5*xUnit,Y3+3*xUnit),QPointF(X1+5.5*xUnit,Y3+2.5*xUnit),
-                                  QPointF(7.5*xUnit,Y3+2.5*xUnit),QPointF(7.5*xUnit,Y3-0.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(6.5*xUnit,Y2+9.5*yUnit),QPointF(6.5*xUnit,Y2+6.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X2+2*xUnit,Y3+0.5*yUnit),QPointF(X2+2*xUnit,Y3+4*yUnit)));
+    lineItems.append(new LineItem(QPointF(X1+6.5*xUnit,Y3+1.5*yUnit),QPointF(X1+6.5*xUnit,Y3+4*yUnit)));
+    lineItems.append(new LineItem(QPointF(X1+5.5*xUnit,Y3+2.8*xUnit),QPointF(X1+5.5*xUnit,Y3+2*xUnit),
+                                  QPointF(7.5*xUnit,Y3+2*xUnit),QPointF(7.5*xUnit,Y3-0.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(6.5*xUnit,Y2+9*yUnit),QPointF(6.5*xUnit,Y2+6.5*yUnit)));
     lineItems.append(new LineItem(QPointF(6.5*xUnit,Y2+6.5*yUnit),QPointF(6.5*xUnit,Y2+3.5*yUnit)));
     /* Line 36-40 */
-    lineItems.append(new LineItem(QPointF(X1+6*xUnit,Y2),QPointF(X1+6*xUnit,Y1+7*yUnit)));
-    lineItems.append(new LineItem(QPointF(5*xUnit,Y2),QPointF(5*xUnit,Y2+yUnit),
-                                  QPointF(X1+5*xUnit,Y2+yUnit),QPointF(X1+5*xUnit,Y2)));
-    lineItems.append(new LineItem(QPointF(X1+5.5*xUnit,Y3+yUnit), QPointF(X1+5.5*xUnit,Y2)));
+    lineItems.append(new LineItem(QPointF(X1+6*xUnit,Y2),QPointF(X1+6*xUnit,Y1+7.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(5*xUnit,Y2+0.5*yUnit),QPointF(5*xUnit,Y2+yUnit),
+                                  QPointF(X1+5*xUnit,Y2+yUnit),QPointF(X1+5*xUnit,Y2+0.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X1+5.5*xUnit,Y3+yUnit), QPointF(X1+5.5*xUnit,Y2+0.5*yUnit)));
     lineItems.append(new LineItem(QPointF(X1+5*xUnit,Y1+7*yUnit),QPointF(X1+5*xUnit,Y1+6*yUnit),
                                   QPointF(X1+xUnit,Y1+6*yUnit), QPointF(X1+xUnit,Y2+2*yUnit),
                                   QPointF(X1,Y2+2*yUnit)));
     lineItems.append(new LineItem(QPointF(7*xUnit,Y2+3*yUnit),QPointF(7*xUnit,Y2+2*yUnit),
-                                  QPointF(X1,Y2+2*yUnit)));
+                                  QPointF(X1+0.5*xUnit,Y2+2*yUnit)));
     /* Line 41-45 */
     lineItems.append(new LineItem(QPointF(X2+0.5*xUnit,Y3),QPointF(X2+0.5*xUnit,Y2+8*yUnit),
                                   QPointF(X1+8.5*xUnit,Y2+8*yUnit),QPointF(X1+8.5*xUnit,Y2+4.5*yUnit),
@@ -858,57 +857,57 @@ void System118_Widget::initScene_bus()
     lineItems.append(new LineItem(QPointF(X1,Y2+4*yUnit), QPointF(X1+xUnit,Y2+4*yUnit),
                                   QPointF(X1+xUnit,Y2+6*yUnit)));
     lineItems.append(new LineItem(QPointF(8*xUnit,Y2+9.4*yUnit),QPointF(8*xUnit,Y2+7*yUnit),
-                                  QPointF(X1+0.5*xUnit,Y2+7*yUnit),QPointF(X1+0.5*xUnit,Y2+6*yUnit)));
+                                  QPointF(X1+0.5*xUnit,Y2+7*yUnit),QPointF(X1+0.5*xUnit,Y2+6.5*yUnit)));
     lineItems.append(new LineItem(QPointF(X1+8.5*xUnit,Y1+yUnit),QPointF(X1+8.5*xUnit,7.5*yUnit),
                                   QPointF(X2+9.5*xUnit,7.5*yUnit),QPointF(X2+9.5*xUnit,6.5*yUnit)));
     lineItems.append(new LineItem(QPointF(X2+3*xUnit,Y1+5*yUnit),QPointF(X2+3*xUnit,Y1+2*yUnit),
-                                  QPointF(X3+1.3*xUnit,Y1+2*yUnit),QPointF(X3+1.3*xUnit,Y1+yUnit)));
+                                  QPointF(X3+1.3*xUnit,Y1+2*yUnit),QPointF(X3+1.3*xUnit,Y1+1.5*yUnit)));
     /* Line 46-50 */
-    lineItems.append(new LineItem(QPointF(X2+8*xUnit,Y1+6*yUnit), QPointF(X3+2.5*xUnit,Y1+6*yUnit),
-                                  QPointF(X3+2.5*xUnit,Y1+5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X2+8*xUnit,Y1+4.5*yUnit),QPointF(X3,Y1+4.5*yUnit),
+    lineItems.append(new LineItem(QPointF(X2+8.4*xUnit,Y1+6*yUnit), QPointF(X3+2.5*xUnit,Y1+6*yUnit),
+                                  QPointF(X3+2.5*xUnit,Y1+5.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X2+8.4*xUnit,Y1+4.5*yUnit),QPointF(X3,Y1+4.5*yUnit),
                                   QPointF(X3,8*yUnit),QPointF(X3+3.5*xUnit,8*yUnit),
                                   QPointF(X3+3.5*xUnit,9*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+0.5*xUnit,6*yUnit),QPointF(X3+0.5*xUnit,7.3*yUnit),
+    lineItems.append(new LineItem(QPointF(X3+0.5*xUnit,6.5*yUnit),QPointF(X3+0.5*xUnit,7.3*yUnit),
                                   QPointF(X3+4*xUnit,7.3*yUnit),QPointF(X3+4*xUnit,9*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+2.5*xUnit,Y1+yUnit),QPointF(X3+2.5*xUnit,Y1+5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+3.5*xUnit,Y1+yUnit),QPointF(X3+3.5*xUnit,9*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+2.5*xUnit,Y1+1.5*yUnit),QPointF(X3+2.5*xUnit,Y1+5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+3.5*xUnit,Y1+yUnit),QPointF(X3+3.5*xUnit,8.5*yUnit)));
     /* Line 51-55 */
-    lineItems.append(new LineItem(QPointF(X3+5*xUnit,Y2+4*yUnit),QPointF(X3+5*xUnit,9*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+5*xUnit,Y2+4*yUnit),QPointF(X3+5*xUnit,9.5*yUnit)));
     lineItems.append(new LineItem(QPointF(X3+4.5*xUnit,9*yUnit),QPointF(X3+4.5*xUnit,5.5*yUnit),
-                                  QPointF(X3+3*xUnit,5.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+5*xUnit,9*yUnit),QPointF(X3+5*xUnit,3*yUnit)));
+                                  QPointF(X3+3.4*xUnit,5.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+5*xUnit,9*yUnit),QPointF(X3+5*xUnit,3.5*yUnit)));
     lineItems.append(new LineItem(QPointF(X1+7*xUnit,Y2),QPointF(X1+7*xUnit,Y1+9*yUnit),
                                   QPointF(X3+4.5*xUnit,Y1+9*yUnit),QPointF(X3+4.5*xUnit,Y2+4*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+3*xUnit,4.5*yUnit),QPointF(X3+4*xUnit,4.5*yUnit),
-                                  QPointF(X3+4*xUnit,3*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+3.4*xUnit,4.5*yUnit),QPointF(X3+4*xUnit,4.5*yUnit),
+                                  QPointF(X3+4*xUnit,3.5*yUnit)));
     /* Line 56-60 */
-    lineItems.append(new LineItem(QPointF(X3+5.5*xUnit,3*yUnit),QPointF(X3+5.5*xUnit,4*yUnit),
-                                  QPointF(X3+7.5*xUnit,4*yUnit), QPointF(X3+7.5*xUnit,3*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+5.3*xUnit,3*yUnit),QPointF(X3+5.3*xUnit,5*yUnit),
-                                  QPointF(X3+9.8*xUnit,5*yUnit),QPointF(X3+9.8*xUnit,3*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+8.5*xUnit,3*yUnit),QPointF(X3+8.5*xUnit,4*yUnit),
-                                  QPointF(X3+9.3*xUnit,4*yUnit),QPointF(X3+9.3*xUnit,3*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+8.3*xUnit,Y1+yUnit),QPointF(X3+8.3*xUnit,9*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+3*xUnit,Y1+yUnit),QPointF(X3+3*xUnit,Y1+2*yUnit),
-                                  QPointF(X3+7.5*xUnit,Y1+2*yUnit),QPointF(X3+7.5*xUnit,Y1+yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+5.5*xUnit,3.5*yUnit),QPointF(X3+5.5*xUnit,4*yUnit),
+                                  QPointF(X3+7.5*xUnit,4*yUnit), QPointF(X3+7.5*xUnit,3.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+5.3*xUnit,3.5*yUnit),QPointF(X3+5.3*xUnit,5*yUnit),
+                                  QPointF(X3+9.8*xUnit,5*yUnit),QPointF(X3+9.8*xUnit,3.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+8*xUnit,3.5*yUnit),QPointF(X3+8*xUnit,4*yUnit),
+                                  QPointF(X3+9.3*xUnit,4*yUnit),QPointF(X3+9.3*xUnit,3.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+8.3*xUnit,Y1+yUnit),QPointF(X3+8.3*xUnit,9.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+3*xUnit,Y1+1.5*yUnit),QPointF(X3+3*xUnit,Y1+2*yUnit),
+                                  QPointF(X3+7.5*xUnit,Y1+2*yUnit),QPointF(X3+7.5*xUnit,Y1+1.5*yUnit)));
     /* Line 61-65 */
-    lineItems.append(new LineItem(QPointF(X3+9*xUnit,9*yUnit),QPointF(X3+9*xUnit,Y1+4*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+8.7*xUnit,Y1+4*yUnit),QPointF(X3+8.7*xUnit,Y1+5.3*yUnit),
-                                  QPointF(X3+7.8*xUnit,Y1+5.3*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+7.8*xUnit,Y1+7*yUnit),QPointF(X4,Y1+7*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+7.8*xUnit,Y1+6*yUnit),QPointF(X4+xUnit,Y1+6*yUnit),
-                                  QPointF(X4+xUnit,Y1+3*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4,Y1+7*yUnit),QPointF(X4+1.8*xUnit,Y1+7*yUnit),
+    lineItems.append(new LineItem(QPointF(X3+9*xUnit,9.5*yUnit),QPointF(X3+9*xUnit,Y1+4*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+8.7*xUnit,Y1+4.5*yUnit),QPointF(X3+8.7*xUnit,Y1+5.3*yUnit),
+                                  QPointF(X3+8.3*xUnit,Y1+5.3*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+8.3*xUnit,Y1+7*yUnit),QPointF(X4,Y1+7*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+8.3*xUnit,Y1+6*yUnit),QPointF(X4+xUnit,Y1+6*yUnit),
+                                  QPointF(X4+xUnit,Y1+3.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+0.5*xUnit,Y1+7*yUnit),QPointF(X4+1.8*xUnit,Y1+7*yUnit),
                                   QPointF(X4+1.8*xUnit,Y1+8*yUnit)));
     /* Line 66-70 */
-    lineItems.append(new LineItem(QPointF(X4+0.3*xUnit,3*yUnit),QPointF(X4+0.3*xUnit,Y1)
+    lineItems.append(new LineItem(QPointF(X4+0.3*xUnit,3.5*yUnit),QPointF(X4+0.3*xUnit,Y1)
                                   ,QPointF(X4+3.2*xUnit,Y1),QPointF(X4+3.2*xUnit,Y1+8*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+0.3*xUnit,3*yUnit),QPointF(X4+0.3*xUnit,Y1)
+    lineItems.append(new LineItem(QPointF(X4+0.3*xUnit,3.5*yUnit),QPointF(X4+0.3*xUnit,Y1)
                                   ,QPointF(X4+3.2*xUnit,Y1),QPointF(X4+3.2*xUnit,Y1+8*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+0.2*xUnit,Y1+4*yUnit),QPointF(X4+0.2*xUnit,Y1+5*yUnit)
+    lineItems.append(new LineItem(QPointF(X4-0.2*xUnit,Y1+4.5*yUnit),QPointF(X4-0.2*xUnit,Y1+5*yUnit)
                                   ,QPointF(X4+2*xUnit,Y1+5*yUnit),QPointF(X4+2*xUnit,Y1+8*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+2.5*xUnit,Y1+3*yUnit),QPointF(X4+2.5*xUnit,Y1+8*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+2.3*xUnit,Y1+3.5*yUnit),QPointF(X4+2.3*xUnit,Y1+8*yUnit)));
     lineItems.append(new LineItem(QPointF(X4+5.5*xUnit,Y1+8*yUnit),QPointF(X4+5.5*xUnit,Y1+yUnit),
                                   QPointF(X4+6.5*xUnit,Y1+yUnit)));
     /* Line 71-75 */
@@ -916,209 +915,209 @@ void System118_Widget::initScene_bus()
                                   ,QPointF(X4+7*xUnit,Y1+3*yUnit),QPointF(X4+7*xUnit,Y1+0.5*yUnit)
                                   ,QPointF(X4+9*xUnit,Y1+0.5*yUnit)));
     lineItems.append(new LineItem(QPointF(X4+9*xUnit,9.5*yUnit),QPointF(X4+2*xUnit,9.5*yUnit)
-                                  ,QPointF(X4+2*xUnit,6*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+2*xUnit,6*yUnit) ,QPointF(X4+2*xUnit,3*yUnit)));
+                                  ,QPointF(X4+2*xUnit,6.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+2*xUnit,6*yUnit) ,QPointF(X4+2*xUnit,3.5*yUnit)));
     lineItems.append(new LineItem(QPointF(X4+2.5*xUnit,3*yUnit),QPointF(X4+2.5*xUnit,4*yUnit)
                                   ,QPointF(X4+4.5*xUnit,4*yUnit),QPointF(X4+4.5*xUnit,3*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+5*xUnit,3*yUnit) ,QPointF(X4+5*xUnit,Y1+8*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+5*xUnit,Y1+8*yUnit) ,QPointF(X4+5*xUnit,3.5*yUnit)));
     /* Line 76-80 */
-    lineItems.append(new LineItem(QPointF(X4+5*xUnit,8*yUnit) ,QPointF(X4+5*xUnit,3*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+5*xUnit,Y1+8*yUnit) ,QPointF(X4+5*xUnit,3.5*yUnit)));
     lineItems.append(new LineItem(QPointF(X4+5.5*xUnit,3*yUnit) ,QPointF(X4+5.5*xUnit,yUnit)
                                   ,QPointF(X5+0.5*xUnit,yUnit),QPointF(X5+0.5*xUnit,3*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+5.5*xUnit,3*yUnit) ,QPointF(X4+5.5*xUnit,4*yUnit)
-                                  ,QPointF(X4+7.5*xUnit,4*yUnit),QPointF(X4+7.5*xUnit,3*yUnit)));
-    lineItems.append(new LineItem(QPointF(X5+0.5*xUnit,3*yUnit),QPointF(X5+0.5*xUnit,4*yUnit)
-                                  ,QPointF(X4+8.5*xUnit,4*yUnit),QPointF(X4+8.5*xUnit,3*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+7.2*xUnit,3*yUnit) ,QPointF(X4+7.2*xUnit,7*yUnit)
+    lineItems.append(new LineItem(QPointF(X4+5.5*xUnit,3.5*yUnit) ,QPointF(X4+5.5*xUnit,4*yUnit)
+                                  ,QPointF(X4+7.5*xUnit,4*yUnit),QPointF(X4+7.5*xUnit,3.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X5+0.5*xUnit,3.5*yUnit),QPointF(X5+0.5*xUnit,4*yUnit)
+                                  ,QPointF(X4+8.5*xUnit,4*yUnit),QPointF(X4+8.5*xUnit,3.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+7.2*xUnit,3.5*yUnit) ,QPointF(X4+7.2*xUnit,7*yUnit)
                                   ,QPointF(X4+6.5*xUnit,7*yUnit)));
     /* Line 81-85 */
-    lineItems.append(new LineItem(QPointF(X4+6.5*xUnit,Y1+0.2*yUnit) ,QPointF(X4+8*xUnit,Y1+0.2*yUnit)
-                                  ,QPointF(X4+8*xUnit,8*yUnit) ,QPointF(X4+6.5*xUnit,8*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+8*xUnit,3*yUnit),QPointF(X4+8*xUnit,6.5*yUnit)
+    lineItems.append(new LineItem(QPointF(X4+7*xUnit,Y1+0.2*yUnit) ,QPointF(X4+7.5*xUnit,Y1+0.2*yUnit)
+                                  ,QPointF(X4+7.5*xUnit,8*yUnit) ,QPointF(X4+7*xUnit,8*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+8*xUnit,3.5*yUnit),QPointF(X4+8*xUnit,6.5*yUnit)
                                   ,QPointF(X4+9*xUnit,6.5*yUnit)));	 //bus 58 move to X4+9*xUnit
     lineItems.append(new LineItem(QPointF(X4+9*xUnit,9.2*yUnit) ,QPointF(X4+8.3*xUnit,9.2*yUnit)
                                   ,QPointF(X4+8.3*xUnit,7.3*yUnit) ,QPointF(X4+9*xUnit,7.3*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+5.8*xUnit,3*yUnit) ,QPointF(X4+5.8*xUnit,5.5*yUnit)
+    lineItems.append(new LineItem(QPointF(X4+5.8*xUnit,3.5*yUnit) ,QPointF(X4+5.8*xUnit,5.5*yUnit)
                                   ,QPointF(X5+3*xUnit,5.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+8.3*xUnit,3*yUnit),QPointF(X4+8.3*xUnit,5*yUnit)
+    lineItems.append(new LineItem(QPointF(X4+8.3*xUnit,3.5*yUnit),QPointF(X4+8.3*xUnit,5*yUnit)
                                   ,QPointF(X5+3*xUnit,5*yUnit)));
     /* Line 86-90 */
-    lineItems.append(new LineItem(QPointF(X4+8.3*xUnit,3*yUnit) ,QPointF(X4+8.3*xUnit,5*yUnit)
+    lineItems.append(new LineItem(QPointF(X4+8.3*xUnit,3.5*yUnit) ,QPointF(X4+8.3*xUnit,5*yUnit)
                                   ,QPointF(X5+3*xUnit,5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X5+xUnit,3*yUnit),QPointF(X5+xUnit,4.5*yUnit)
+    lineItems.append(new LineItem(QPointF(X5+xUnit,3.5*yUnit),QPointF(X5+xUnit,4.5*yUnit)
                                   ,QPointF(X5+3*xUnit,4.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X5+3*xUnit,6*yUnit),QPointF(X5+4*xUnit,6*yUnit)
-                                  ,QPointF(X5+4*xUnit,Y1+0.5*yUnit),QPointF(X5+3*xUnit,Y1+0.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X5+3*xUnit,5*yUnit),QPointF(X5+5*xUnit,5*yUnit)
-                                  ,QPointF(X5+5*xUnit,Y1+6*yUnit) ,QPointF(X5+3*xUnit,Y1+6*yUnit)));
-    lineItems.append(new LineItem(QPointF(X5+3*xUnit,Y1+1.5*yUnit),QPointF(X5+3.7*xUnit,Y1+1.5*yUnit)
-                                  ,QPointF(X5+3.7*xUnit,Y1+5*yUnit),QPointF(X5+3*xUnit,Y1+5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X5+3.4*xUnit,6*yUnit),QPointF(X5+4*xUnit,6*yUnit)
+                                  ,QPointF(X5+4*xUnit,Y1+0.5*yUnit),QPointF(X5+3.4*xUnit,Y1+0.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X5+3.4*xUnit,5*yUnit),QPointF(X5+5*xUnit,5*yUnit)
+                                  ,QPointF(X5+5*xUnit,Y1+6*yUnit) ,QPointF(X5+3.4*xUnit,Y1+6*yUnit)));
+    lineItems.append(new LineItem(QPointF(X5+3.4*xUnit,Y1+1.5*yUnit),QPointF(X5+3.7*xUnit,Y1+1.5*yUnit)
+                                  ,QPointF(X5+3.7*xUnit,Y1+5*yUnit),QPointF(X5+3.4*xUnit,Y1+5*yUnit)));
     /* Line 91-95 */
-    lineItems.append(new LineItem(QPointF(X5+3*xUnit,Y1+1*yUnit),QPointF(X5+4.5*xUnit,Y1+1*yUnit)
+    lineItems.append(new LineItem(QPointF(X5+3.4*xUnit,Y1+1*yUnit),QPointF(X5+4.5*xUnit,Y1+1*yUnit)
                                   ,QPointF(X5+4.5*xUnit,Y2+6*yUnit)));
-    lineItems.append(new LineItem(QPointF(X5+3*xUnit,Y1+7*yUnit),QPointF(X5+4*xUnit,Y1+7*yUnit)
+    lineItems.append(new LineItem(QPointF(X5+3.4*xUnit,Y1+7*yUnit),QPointF(X5+4*xUnit,Y1+7*yUnit)
                                   ,QPointF(X5+4*xUnit,Y2+6*yUnit)));
-    lineItems.append(new LineItem(QPointF(X5+1.5*xUnit,6.5*yUnit),QPointF(X5+3*xUnit,6.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X5+1.9*xUnit,6.5*yUnit),QPointF(X5+3*xUnit,6.5*yUnit)));
     lineItems.append(new LineItem(QPointF(X5+1.5*xUnit,7*yUnit) ,QPointF(X5+0.5*xUnit,7*yUnit)
                                   ,QPointF(X5+0.5*xUnit,Y1+3.5*yUnit) ,QPointF(X5+xUnit,Y1+3.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X5+xUnit,Y1+5*yUnit) ,QPointF(X5+3*xUnit,Y1+5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X5+1.4*xUnit,Y1+5*yUnit) ,QPointF(X5+3*xUnit,Y1+5*yUnit)));
     /* Line 96-100 */
-    lineItems.append(new LineItem(QPointF(X3+5.5*xUnit,Y2+4*yUnit) ,QPointF(X3+5.5*xUnit,Y3)
-                                  ,QPointF(X4+7*xUnit,Y3),QPointF(X4+7*xUnit,Y2+9*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+5.5*xUnit,Y2+4.5*yUnit) ,QPointF(X3+5.5*xUnit,Y3)
+                                  ,QPointF(X4+7*xUnit,Y3),QPointF(X4+7*xUnit,Y2+9.5*yUnit)));
     lineItems.append(new LineItem(QPointF(X5+xUnit,Y1+4.5*yUnit) ,QPointF(X4+9.5*xUnit,Y1+4.5*yUnit)
                                   ,QPointF(X4+9.5*xUnit,Y2+9*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+5*xUnit,Y1+8*yUnit),QPointF(X4+5*xUnit,Y2+yUnit)
-                                  ,QPointF(X4+7*xUnit,Y2+yUnit) ,QPointF(X4+7*xUnit,Y2+9*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+5*xUnit,Y1+8*yUnit),QPointF(X4+5*xUnit,Y2+yUnit)
+    lineItems.append(new LineItem(QPointF(X4+5*xUnit,Y1+8.5*yUnit),QPointF(X4+5*xUnit,Y2+yUnit)
+                                  ,QPointF(X4+7*xUnit,Y2+yUnit) ,QPointF(X4+7*xUnit,Y2+8.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+5*xUnit,Y1+8.5*yUnit),QPointF(X4+5*xUnit,Y2+yUnit)
                                   ,QPointF(X4+7*xUnit,Y2+yUnit) ,QPointF(X4+7*xUnit,Y2+9*yUnit)));
     lineItems.append(new LineItem(QPointF(X5+2*xUnit,Y2+6*yUnit),QPointF(X5+2*xUnit,Y2+5.3*yUnit)
                                   ,QPointF(X4+8.2*xUnit,Y2+5.3*yUnit),QPointF(X4+8.2*xUnit,Y2+6*yUnit)));
     /* Line 101-105 */
     lineItems.append(new LineItem(QPointF(X5+3*xUnit,Y2+6*yUnit),QPointF(X5+3*xUnit,Y2+4.8*yUnit)
-                                  ,QPointF(X4+8.5*xUnit,Y2+4.8*yUnit),QPointF(X4+8.5*xUnit,Y2+4*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+7*xUnit,Y2+9*yUnit),QPointF(X4+7*xUnit,Y2+6*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+7.8*xUnit,Y2+6*yUnit) ,QPointF(X4+7.8*xUnit,Y2+4*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+7.3*xUnit,Y2+9*yUnit),QPointF(X4+7.3*xUnit,Y2+6.7*yUnit)
-                                  ,QPointF(X4+3*xUnit,Y2+6.7*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4,Y1+8*yUnit),QPointF(X4+0.5*xUnit,Y1+8*yUnit)
+                                  ,QPointF(X4+8.5*xUnit,Y2+4.8*yUnit),QPointF(X4+8.5*xUnit,Y2+4.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+7*xUnit,Y2+9*yUnit),QPointF(X4+7*xUnit,Y2+6.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+7.8*xUnit,Y2+6*yUnit) ,QPointF(X4+7.8*xUnit,Y2+4.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+6.6*xUnit,Y2+9*yUnit),QPointF(X4+6.6*xUnit,Y2+6.8*yUnit)
+                                  ,QPointF(X4+3.4*xUnit,Y2+6.8*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+0.4*xUnit,Y1+8*yUnit),QPointF(X4+0.5*xUnit,Y1+8*yUnit)
                                   ,QPointF(X4+0.5*xUnit,Y2+6.5*yUnit) ,QPointF(X4+xUnit,Y2+6.5*yUnit)));
     /* Line 106-110 */
-    lineItems.append(new LineItem(QPointF(X4+2.5*xUnit,Y1+8*yUnit),QPointF(X4+2.5*xUnit,Y1+9*yUnit)
+    lineItems.append(new LineItem(QPointF(X4+2.5*xUnit,Y1+8.5*yUnit),QPointF(X4+2.5*xUnit,Y1+9*yUnit)
                                   ,QPointF(X4+0.8*xUnit,Y1+9*yUnit),QPointF(X4+0.8*xUnit,Y2+5*yUnit)
                                   ,QPointF(X4+xUnit,Y2+5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+3*xUnit,Y2+7.5*yUnit),QPointF(X4+xUnit,Y2+7.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+3*xUnit,Y2+7.5*yUnit),QPointF(X4+1.4*xUnit,Y2+7.5*yUnit)));
     lineItems.append(new LineItem(QPointF(X4+xUnit,Y2+7.5*yUnit) ,QPointF(X3+3.5*xUnit,Y2+7.5*yUnit)
                                   ,QPointF(X3+3.5*xUnit,Y2+8*yUnit)));
     lineItems.append(new LineItem(QPointF(X2+8*xUnit,Y2+8*yUnit),QPointF(X2+8*xUnit,Y2+7*yUnit)
                                   ,QPointF(X3+2.5*xUnit,Y2+7*yUnit),QPointF(X3+2.5*xUnit,Y2+8*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+2.2*xUnit,Y2+8*yUnit)
+    lineItems.append(new LineItem(QPointF(X3+2.2*xUnit,Y2+8.5*yUnit)
                                   ,QPointF(X3+2.2*xUnit,Y3+yUnit)));
     /* Line 111-115 */
-    lineItems.append(new LineItem(QPointF(X3+0.5*xUnit,Y2+8*yUnit) ,QPointF(X3+0.5*xUnit,Y3)));
-    lineItems.append(new LineItem(QPointF(X3+1.5*xUnit,Y3+yUnit) ,QPointF(X3+1.5*xUnit,Y3)));
-    lineItems.append(new LineItem(QPointF(X3+2*xUnit,Y3+yUnit),QPointF(X3+2*xUnit,Y3+3*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+3.3*xUnit,Y2+8*yUnit),QPointF(X3+3.3*xUnit,Y3+5.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+4*xUnit,Y2+8*yUnit),QPointF(X3+4*xUnit,Y3+7*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+0.5*xUnit,Y2+8.5*yUnit) ,QPointF(X3+0.5*xUnit,Y3)));
+    lineItems.append(new LineItem(QPointF(X3+1.5*xUnit,Y3+yUnit) ,QPointF(X3+1.5*xUnit,Y3+0.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+2*xUnit,Y3+1.5*yUnit),QPointF(X3+2*xUnit,Y3+3*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+3.3*xUnit,Y2+8.5*yUnit),QPointF(X3+3.3*xUnit,Y3+5.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+4*xUnit,Y2+8.5*yUnit),QPointF(X3+4*xUnit,Y3+7*yUnit)));
     /* Line 116-120 */
     lineItems.append(new LineItem(QPointF(X4+xUnit,Y2+7*yUnit),QPointF(X3+8.5*xUnit,Y2+7*yUnit)
                                   ,QPointF(X3+8.5*xUnit,Y3+yUnit),QPointF(X3+4.5*xUnit,Y3+yUnit)
                                   ,QPointF(X3+4.5*xUnit,Y3+7*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+3*xUnit,Y3+5.5*yUnit),QPointF(X3+3*xUnit,Y3+7*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+9.5*xUnit,Y3+4.5*yUnit),QPointF(X3+9.5*xUnit,Y3+7*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+xUnit,Y2+9.5*yUnit),QPointF(X4+0.5*xUnit,Y2+9.5*yUnit)
+    lineItems.append(new LineItem(QPointF(X3+3*xUnit,Y3+6*yUnit),QPointF(X3+3*xUnit,Y3+7*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+9.5*xUnit,Y3+5*yUnit),QPointF(X3+9.5*xUnit,Y3+7*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+xUnit,Y2+9*yUnit),QPointF(X4+0.5*xUnit,Y2+9*yUnit)
                                   ,QPointF(X4+0.5*xUnit,Y3+7*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+5.5*xUnit,Y3+7*yUnit),QPointF(X3+5.5*xUnit,Y3+8*yUnit)
-                                  ,QPointF(X3+8*xUnit,Y3+8*yUnit),QPointF(X3+8*xUnit,Y3+7*yUnit)));
-    /* Line 120-125 */
-    lineItems.append(new LineItem(QPointF(X4+1.5*xUnit,Y3+7*yUnit),QPointF(X4+1.5*xUnit,Y3+3*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+1.5*xUnit,Y3+3*yUnit) ,QPointF(X4+1.5*xUnit,Y3+1.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+2.3*xUnit,Y3+7*yUnit) ,QPointF(X4+2.3*xUnit,Y3+4.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+2.3*xUnit,Y3+7*yUnit),QPointF(X4+2.3*xUnit,Y3+4.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+2.8*xUnit,Y3+1.5*yUnit),QPointF(X4+2.8*xUnit,Y3+4.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+5.5*xUnit,Y3+7.5*yUnit),QPointF(X3+5.5*xUnit,Y3+8*yUnit)
+                                  ,QPointF(X3+8*xUnit,Y3+8*yUnit),QPointF(X3+8*xUnit,Y3+7.5*yUnit)));
+    /* Line 121-125 */
+    lineItems.append(new LineItem(QPointF(X4+1.5*xUnit,Y3+7*yUnit),QPointF(X4+1.5*xUnit,Y3+3.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+1.5*xUnit,Y3+3*yUnit) ,QPointF(X4+1.5*xUnit,Y3+2*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+2.3*xUnit,Y3+7*yUnit) ,QPointF(X4+2.3*xUnit,Y3+5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+2.3*xUnit,Y3+7*yUnit),QPointF(X4+2.3*xUnit,Y3+5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+2.8*xUnit,Y3+2*yUnit),QPointF(X4+2.8*xUnit,Y3+4.5*yUnit)));
     /* Line 126-130 */
-    lineItems.append(new LineItem(QPointF(X4+3*xUnit,Y2+8*yUnit) ,QPointF(X4+3.5*xUnit,Y2+8*yUnit)
-                                  ,QPointF(X4+3.5*xUnit,Y3+3*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+3.5*xUnit,Y3+4.5*yUnit) ,QPointF(X4+3.5*xUnit,Y3+3*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+8.5*xUnit,Y3+7*yUnit) ,QPointF(X3+8.5*xUnit,Y3+9.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+8*xUnit,Y3+9.5*yUnit) ,QPointF(X3+8*xUnit,Y4+0.3*yUnit)
-                                  ,QPointF(X3+4*xUnit,Y4+0.3*yUnit),QPointF(X3+4*xUnit,Y4+yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+3*xUnit,Y4+yUnit) ,QPointF(X3+3*xUnit,Y4+2.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+3.4*xUnit,Y2+8*yUnit) ,QPointF(X4+4*xUnit,Y2+8*yUnit)
+                                  ,QPointF(X4+4*xUnit,Y3+3*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+3.5*xUnit,Y3+3.5*yUnit) ,QPointF(X4+3.5*xUnit,Y3+4.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+8.5*xUnit,Y3+7.5*yUnit) ,QPointF(X3+8.5*xUnit,Y3+9.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+8*xUnit,Y4) ,QPointF(X3+8*xUnit,Y4+0.3*yUnit)
+                                  ,QPointF(X3+4*xUnit,Y4+0.3*yUnit),QPointF(X3+4*xUnit,Y4+0.9*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+3*xUnit,Y4+1.5*yUnit) ,QPointF(X3+3*xUnit,Y4+2.5*yUnit)));
     /* Line 131-135 */
-    lineItems.append(new LineItem(QPointF(X3+4*xUnit,Y4+yUnit),QPointF(X3+4*xUnit,Y4+5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+2.5*xUnit,Y4+2.5*yUnit),QPointF(X3+2.5*xUnit,Y4+5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+2.5*xUnit,Y4+5*yUnit),QPointF(X3+2.5*xUnit,Y4+7*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+2.9*xUnit,Y4+7*yUnit) ,QPointF(X3+2.9*xUnit,Y4+9*yUnit)
+    lineItems.append(new LineItem(QPointF(X3+3.8*xUnit,Y4+1.5*yUnit),QPointF(X3+3.8*xUnit,Y4+5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+2.5*xUnit,Y4+3*yUnit),QPointF(X3+2.5*xUnit,Y4+5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+2.5*xUnit,Y4+5.5*yUnit),QPointF(X3+2.5*xUnit,Y4+7*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+2.9*xUnit,Y4+7.5*yUnit) ,QPointF(X3+2.9*xUnit,Y4+9*yUnit)
                                   ,QPointF(X3+3.5*xUnit,Y4+9*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+4.5*xUnit,Y4+5*yUnit),QPointF(X3+4.5*xUnit,Y4+6*yUnit)
-                                  ,QPointF(X3+6*xUnit,Y4+6*yUnit),QPointF(X3+6*xUnit,Y4+5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+4.5*xUnit,Y4+5.5*yUnit),QPointF(X3+4.5*xUnit,Y4+6*yUnit)
+                                  ,QPointF(X3+6*xUnit,Y4+6*yUnit),QPointF(X3+6*xUnit,Y4+5.5*yUnit)));
     /* Line 136-140 */
-    lineItems.append(new LineItem(QPointF(X3+4*xUnit,Y4+5*yUnit),QPointF(X3+4*xUnit,Y4+6.5*yUnit)
-                                  ,QPointF(X3+6.5*xUnit,Y4+6.5*yUnit),QPointF(X3+6.5*xUnit,Y4+5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+4*xUnit,Y4+5.5*yUnit),QPointF(X3+4*xUnit,Y4+6.5*yUnit)
+                                  ,QPointF(X3+8*xUnit,Y4+6.5*yUnit),QPointF(X3+8*xUnit,Y4+5.5*yUnit)));
     lineItems.append(new LineItem(QPointF(X3+6.5*xUnit,Y4+5*yUnit) ,QPointF(X3+6.5*xUnit,Y4+4*yUnit)
                                   ,QPointF(X3+8*xUnit,Y4+4*yUnit) ,QPointF(X3+8*xUnit,Y4+5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+6.8*xUnit,Y4+5*yUnit),QPointF(X3+6.8*xUnit,Y4+8*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+6.8*xUnit,Y4+5*yUnit),QPointF(X3+6.8*xUnit,Y4+8*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+9*xUnit,Y4+8*yUnit),QPointF(X3+9*xUnit,Y4+9*yUnit)
-                                  ,QPointF(X4+1.5*xUnit,Y4+9*yUnit),QPointF(X4+1.5*xUnit,Y4+8*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+8.5*xUnit,Y4+5.5*yUnit),QPointF(X3+8.5*xUnit,Y4+8*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+8.5*xUnit,Y4+5.5*yUnit),QPointF(X3+8.5*xUnit,Y4+8*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+9*xUnit,Y4+8.5*yUnit),QPointF(X3+9*xUnit,Y4+9*yUnit)
+                                  ,QPointF(X4+1.5*xUnit,Y4+9*yUnit),QPointF(X4+1.5*xUnit,Y4+8.5*yUnit)));
     /* Line 141-145 */
-    lineItems.append(new LineItem(QPointF(X3+9.5*xUnit,Y4+5*yUnit),QPointF(X3+9.5*xUnit,Y4+6*yUnit)
-                                  ,QPointF(X4+2*xUnit,Y4+6*yUnit) ,QPointF(X4+2*xUnit,Y4+5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+9.5*xUnit,Y4+5*yUnit) ,QPointF(X3+9.5*xUnit,Y4+6*yUnit)
-                                  ,QPointF(X4+2*xUnit,Y4+6*yUnit) ,QPointF(X4+2*xUnit,Y4+5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+2.5*xUnit,Y4+8*yUnit),QPointF(X4+2.5*xUnit,Y4+5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+3.5*xUnit,Y4+3.5*yUnit) ,QPointF(X4+3.5*xUnit,Y4+5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+5*xUnit,Y4+5*yUnit),QPointF(X4+5*xUnit,Y4+yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+9.5*xUnit,Y4+5.5*yUnit),QPointF(X3+9.5*xUnit,Y4+6*yUnit)
+                                  ,QPointF(X4+2*xUnit,Y4+6*yUnit) ,QPointF(X4+2*xUnit,Y4+5.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+9.5*xUnit,Y4+5.5*yUnit) ,QPointF(X3+9.5*xUnit,Y4+6*yUnit)
+                                  ,QPointF(X4+2*xUnit,Y4+6*yUnit) ,QPointF(X4+2*xUnit,Y4+5.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+2.5*xUnit,Y4+8*yUnit),QPointF(X4+2.5*xUnit,Y4+5.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+3.5*xUnit,Y4+5.5*yUnit) ,QPointF(X4+3.5*xUnit,Y4+4*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+5*xUnit,Y4+5*yUnit),QPointF(X4+5*xUnit,Y4+1.5*yUnit)));
     /* Line 146-150 */
-    lineItems.append(new LineItem(QPointF(X4+4.3*xUnit,Y4+3.5*yUnit) ,QPointF(X4+4.3*xUnit,Y4+yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+4.3*xUnit,Y4+3.5*yUnit) ,QPointF(X4+4.3*xUnit,Y4+1.5*yUnit)));
     lineItems.append(new LineItem(QPointF(X4+4.3*xUnit,Y4+yUnit),QPointF(X4+4.3*xUnit,Y4+0.5*yUnit)
                                   ,QPointF(X4+3*xUnit,Y4+0.5*yUnit),QPointF(X4+3*xUnit,Y4+yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+4.5*xUnit,Y3+4.5*yUnit),QPointF(X4+4.5*xUnit,Y3+9.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+9*xUnit,Y3+9.5*yUnit) ,QPointF(X3+9*xUnit,Y4+0.5*yUnit)
-                                  ,QPointF(X4+2.5*xUnit,Y4+0.5*yUnit),QPointF(X4+2.5*xUnit,Y3+9.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+4.8*xUnit,Y4+yUnit),QPointF(X4+4.8*xUnit,Y3+9.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+4.5*xUnit,Y3+5*yUnit),QPointF(X4+4.5*xUnit,Y3+9.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+9*xUnit,Y4) ,QPointF(X3+9*xUnit,Y4+0.5*yUnit)
+                                  ,QPointF(X4+2.5*xUnit,Y4+0.5*yUnit),QPointF(X4+2.5*xUnit,Y4)));
+    lineItems.append(new LineItem(QPointF(X4+4.8*xUnit,Y4+yUnit),QPointF(X4+4.8*xUnit,Y4)));
     /* Line 151-155 */
-    lineItems.append(new LineItem(QPointF(X4+3.3*xUnit,Y3+4.5*yUnit),QPointF(X4+3.3*xUnit,Y3+8*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+5.3*xUnit,Y3+4.5*yUnit) ,QPointF(X4+5.3*xUnit,Y3+6*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+5.7*xUnit,Y3+4.5*yUnit),QPointF(X4+5.7*xUnit,Y3+5.5*yUnit)
-                                  ,QPointF(X4+7.5*xUnit,Y3+5.5*yUnit) ,QPointF(X4+7.5*xUnit,Y3+4.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+7*xUnit,Y4+5*yUnit),QPointF(X4+7*xUnit,Y4+yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+3.3*xUnit,Y3+5*yUnit),QPointF(X4+3.3*xUnit,Y3+8*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+5.3*xUnit,Y3+5*yUnit) ,QPointF(X4+5.3*xUnit,Y3+6*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+5.7*xUnit,Y3+5*yUnit),QPointF(X4+5.7*xUnit,Y3+5.5*yUnit)
+                                  ,QPointF(X4+7.5*xUnit,Y3+5.5*yUnit) ,QPointF(X4+7.5*xUnit,Y3+5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+7*xUnit,Y4+5*yUnit),QPointF(X4+7*xUnit,Y4+1.5*yUnit)));
     lineItems.append(new LineItem(QPointF(X4+5.5*xUnit,Y4+yUnit),QPointF(X4+5.5*xUnit,Y4)
                                   ,QPointF(X4+7*xUnit,Y4),QPointF(X4+7*xUnit,Y4+yUnit)));
     /* Line 156-160 */
-    lineItems.append(new LineItem(QPointF(X4+2.8*xUnit,Y4+yUnit),QPointF(X4+2.8*xUnit,Y3+9.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+2.8*xUnit,Y4+yUnit),QPointF(X4+2.8*xUnit,Y4)));
     lineItems.append(new LineItem(QPointF(X4+2.8*xUnit,Y3+9.5*yUnit),QPointF(X4+2.8*xUnit,Y3+8.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+7.5*xUnit,Y3+6*yUnit) ,QPointF(X4+7.5*xUnit,Y4+yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+8.5*xUnit,Y3+4.5*yUnit) ,QPointF(X4+8.5*xUnit,Y4+yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+8*xUnit,Y4+yUnit),QPointF(X4+8*xUnit,Y4+7*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+7.5*xUnit,Y3+6.5*yUnit) ,QPointF(X4+7.5*xUnit,Y4+yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+8.5*xUnit,Y3+5*yUnit) ,QPointF(X4+8.5*xUnit,Y4+yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+8*xUnit,Y4+1.5*yUnit),QPointF(X4+8*xUnit,Y4+7*yUnit)));
     /* Line 161-165 */
-    lineItems.append(new LineItem(QPointF(X4+3.5*xUnit,Y4+5*yUnit) ,QPointF(X4+3.5*xUnit,Y4+7*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+6.5*xUnit,Y4+7*yUnit),QPointF(X4+6.5*xUnit,Y4+6.5*yUnit)
+    lineItems.append(new LineItem(QPointF(X4+3.5*xUnit,Y4+5.5*yUnit) ,QPointF(X4+3.5*xUnit,Y4+7*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+7*xUnit,Y4+7*yUnit),QPointF(X4+7*xUnit,Y4+6.5*yUnit)
                                   ,QPointF(X4+4.5*xUnit,Y4+6.5*yUnit),QPointF(X4+4.5*xUnit,Y4+7*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+8.5*xUnit,Y4+yUnit),QPointF(X4+8.5*xUnit,Y4+5*yUnit)
+    lineItems.append(new LineItem(QPointF(X4+8.5*xUnit,Y4+1.5*yUnit),QPointF(X4+8.5*xUnit,Y4+5*yUnit)
                                   ,QPointF(X4+9.5*xUnit,Y4+5*yUnit),QPointF(X4+9.5*xUnit,Y4+7*yUnit)));
-    lineItems.append(new LineItem(QPointF(X4+9*xUnit,Y4+yUnit) ,QPointF(X4+9*xUnit,Y4+2*yUnit)
-                                  ,QPointF(X5+0.3*xUnit,Y4+2*yUnit),QPointF(X5+0.3*xUnit,Y4+yUnit)));
-    lineItems.append(new LineItem(QPointF(X5+0.5*xUnit,Y4+yUnit) ,QPointF(X5+0.5*xUnit,Y4+7*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+9*xUnit,Y4+1.5*yUnit) ,QPointF(X4+9*xUnit,Y4+2*yUnit)
+                                  ,QPointF(X5+0.3*xUnit,Y4+2*yUnit),QPointF(X5+0.3*xUnit,Y4+1.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X5+0.5*xUnit,Y4+1.5*yUnit) ,QPointF(X5+0.5*xUnit,Y4+7*yUnit)));
     /* Line 166-170 */
     lineItems.append(new LineItem(QPointF(X5+xUnit,Y4+7*yUnit),QPointF(X5+xUnit,Y4+4*yUnit)
-                                  ,QPointF(X5+3*xUnit,Y4+4*yUnit),QPointF(X5+3*xUnit,Y4+yUnit)));
+                                  ,QPointF(X5+3*xUnit,Y4+4*yUnit),QPointF(X5+3*xUnit,Y4+1.5*yUnit)));
     lineItems.append(new LineItem(QPointF(X4+9*xUnit,Y4+yUnit),QPointF(X4+9*xUnit,Y3+9*yUnit)
-                                  ,QPointF(X5+0.5*xUnit,Y3+9*yUnit),QPointF(X5+0.5*xUnit,Y3+8*yUnit)));
-    lineItems.append(new LineItem(QPointF(X5+xUnit,Y4+yUnit),QPointF(X5+xUnit,Y4+2*yUnit)
-                                  ,QPointF(X5+2.5*xUnit,Y4+2*yUnit) ,QPointF(X5+2.5*xUnit,Y4+yUnit)));
-    lineItems.append(new LineItem(QPointF(X5+2.5*xUnit,Y4+yUnit),QPointF(X5+2.5*xUnit,Y3+8*yUnit)));
-    lineItems.append(new LineItem(QPointF(X5+3.5*xUnit,Y4+yUnit),QPointF(X5+3.5*xUnit,Y4+2*yUnit)
-                                  ,QPointF(X5+5*xUnit,Y4+2*yUnit) ,QPointF(X5+5*xUnit,Y4+yUnit)));
+                                  ,QPointF(X5+0.5*xUnit,Y3+9*yUnit),QPointF(X5+0.5*xUnit,Y3+8.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X5+xUnit,Y4+1.5*yUnit),QPointF(X5+xUnit,Y4+2*yUnit)
+                                  ,QPointF(X5+2.5*xUnit,Y4+2*yUnit) ,QPointF(X5+2.5*xUnit,Y4+1.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X5+2.5*xUnit,Y4+yUnit),QPointF(X5+2.5*xUnit,Y3+8.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X5+3.5*xUnit,Y4+1.5*yUnit),QPointF(X5+3.5*xUnit,Y4+2*yUnit)
+                                  ,QPointF(X5+5*xUnit,Y4+2*yUnit) ,QPointF(X5+5*xUnit,Y4+1.5*yUnit)));
     /* Line 171-175 */
-    lineItems.append(new LineItem(QPointF(X5+3.25*xUnit,Y4+yUnit),QPointF(X5+3.25*xUnit,Y4+2.8*yUnit)
+    lineItems.append(new LineItem(QPointF(X5+3.25*xUnit,Y4+1.5*yUnit),QPointF(X5+3.25*xUnit,Y4+2.8*yUnit)
                                   ,QPointF(X5+4.5*xUnit,Y4+2.8*yUnit)));
-    lineItems.append(new LineItem(QPointF(X5+5.5*xUnit,Y4+yUnit),QPointF(X5+5.5*xUnit,Y3+8*yUnit)));
+    lineItems.append(new LineItem(QPointF(X5+5.5*xUnit,Y3+8.5*yUnit),QPointF(X5+5.5*xUnit,Y4+yUnit)));
     lineItems.append(new LineItem(QPointF(X5+4.5*xUnit,Y4+3.25*yUnit),QPointF(X5+4*xUnit,Y4+3.25*yUnit)
                                   ,QPointF(X5+4*xUnit,Y4+5.5*yUnit) ,QPointF(X5+4.5*xUnit,Y4+5.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X5+1.75*xUnit,Y4+7*yUnit),QPointF(X5+1.75*xUnit,Y4+8.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X5+1.75*xUnit,Y4+7.5*yUnit),QPointF(X5+1.75*xUnit,Y4+8.5*yUnit)));
     lineItems.append(new LineItem(QPointF(X5+4.5*xUnit,Y4+6.5*yUnit) ,QPointF(X5+4*xUnit,Y4+6.5*yUnit)
                                   ,QPointF(X5+4*xUnit,Y4+8.5*yUnit)));
     /* Line 176-180 */
-    lineItems.append(new LineItem(QPointF(X5+2*xUnit,Y4+8.5*yUnit),QPointF(X5+2*xUnit,Y5),QPointF(X5,Y5)));
-    lineItems.append(new LineItem(QPointF(X5+4*xUnit,Y4+8.5*yUnit),QPointF(X5+4*xUnit,Y4+9.5*yUnit)
-                                  ,QPointF(X5+6*xUnit,Y4+9.5*yUnit) ,QPointF(X5+6*xUnit,Y4+8.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X1+3.5*xUnit,Y1+7*yUnit),QPointF(X1+3.5*xUnit,Y1+8*yUnit)
-                                  ,QPointF(X1+2*xUnit,Y1+8*yUnit)));
+    lineItems.append(new LineItem(QPointF(X5+2*xUnit,Y4+9*yUnit),QPointF(X5+2*xUnit,Y5),QPointF(X5+0.4*xUnit,Y5)));
+    lineItems.append(new LineItem(QPointF(X5+4*xUnit,Y4+9*yUnit),QPointF(X5+4*xUnit,Y4+9.5*yUnit)
+                                  ,QPointF(X5+6*xUnit,Y4+9.5*yUnit) ,QPointF(X5+6*xUnit,Y4+9*yUnit)));
+    lineItems.append(new LineItem(QPointF(X1+3.5*xUnit,Y1+7.5*yUnit),QPointF(X1+3.5*xUnit,Y1+8*yUnit)
+                                  ,QPointF(X1+2.5*xUnit,Y1+8*yUnit)));
     lineItems.append(new LineItem(QPointF(X1+1.5*xUnit,Y2+6*yUnit),QPointF(X1+1.5*xUnit,Y1+8*yUnit)
                                   ,QPointF(X1+2*xUnit,Y1+8*yUnit)));
-    lineItems.append(new LineItem(QPointF(X1+xUnit,Y2+6*yUnit) ,QPointF(X1+xUnit,Y2+8.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X1+xUnit,Y2+6.5*yUnit) ,QPointF(X1+xUnit,Y2+8.5*yUnit)));
     /* Line 181-186 */
     lineItems.append(new LineItem(QPointF(8.5*xUnit,Y2+6.5*xUnit),QPointF(8.5*xUnit,Y3),
-                                  QPointF(X1+4*xUnit,Y3),QPointF(X1+4*xUnit,Y2+8.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X1+1.5*xUnit,Y2+8.5*yUnit),QPointF(X1+1.5*xUnit,Y2+9.5*yUnit),
-                                  QPointF(X1+3.5*xUnit,Y2+9.5*yUnit),QPointF(X1+3.5*xUnit,Y2+8.5*yUnit)));
+                                  QPointF(X1+4*xUnit,Y3),QPointF(X1+4*xUnit,Y2+9*yUnit)));
+    lineItems.append(new LineItem(QPointF(X1+1.5*xUnit,Y2+9*yUnit),QPointF(X1+1.5*xUnit,Y2+9.5*yUnit),
+                                  QPointF(X1+3.5*xUnit,Y2+9.5*yUnit),QPointF(X1+3.5*xUnit,Y2+9*yUnit)));
 
-    lineItems.append(new LineItem(QPointF(X4+3*xUnit,Y2+7.5*yUnit),QPointF(X4+5*xUnit,Y2+7.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X1+2.5*xUnit,5.5*yUnit),QPointF(X1+2.5*xUnit,6.5*yUnit),
-                                  QPointF(X1+5.5*xUnit,6.5*yUnit),QPointF(X1+5.5*xUnit,5.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+5.5*xUnit,Y3+7*yUnit),QPointF(X3+5.5*xUnit,Y3+4.5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+8.5*xUnit,Y3+4.5*yUnit),QPointF(X3+8.5*xUnit,Y3+5.5*yUnit)
-                                  ,QPointF(X3+6.5*xUnit,Y3+5.5*yUnit),QPointF(X3+6.5*xUnit,Y3+4.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X4+3.5*xUnit,Y2+7.5*yUnit),QPointF(X4+5*xUnit,Y2+7.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X1+2.5*xUnit,6*yUnit),QPointF(X1+2.5*xUnit,6.5*yUnit),
+                                  QPointF(X1+5.5*xUnit,6.5*yUnit),QPointF(X1+5.5*xUnit,6*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+5.5*xUnit,Y3+7*yUnit),QPointF(X3+5.5*xUnit,Y3+5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+8.5*xUnit,Y3+5*yUnit),QPointF(X3+8.5*xUnit,Y3+5.5*yUnit)
+                                  ,QPointF(X3+6.5*xUnit,Y3+5.5*yUnit),QPointF(X3+6.5*xUnit,Y3+5*yUnit)));
 
     /* Generator 1-5 */
     gLineItems.append(new LineItem(QPointF(3.5*xUnit,7*yUnit),QPointF(3.5*xUnit,7*yUnit-hUnit)));
