@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/IEEE 30-BUS.jpg</file>
+        <file>images/IEEE 30-BUS.png</file>
+        <file>images/G.png</file>
+        <file>images/logIn.gif</file>
+        <file>images/logIn2.gif</file>
+        <file>images/sound.mp3</file>
+    </qresource>
+</RCC>

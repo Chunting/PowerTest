@@ -1,0 +1,39 @@
+<RCC>
+    <qresource prefix="/">
+        <file>data.txt</file>
+        <file>data/Line.txt</file>
+        <file>data/Gen.txt</file>
+        <file>data/init.txt</file>
+        <file>data/loop0.txt</file>
+        <file>data/loop1.txt</file>
+        <file>data/loop2.txt</file>
+        <file>data/loop3.txt</file>
+        <file>data/loop4.txt</file>
+        <file>data/loop5.txt</file>
+        <file>data/set.txt</file>
+        <file>data/Line5.txt</file>
+        <file>data/Line1.txt</file>
+        <file>data/Line2.txt</file>
+        <file>data/Line3.txt</file>
+        <file>data/Line4.txt</file>
+        <file>data/Line6.txt</file>
+        <file>data/Line7.txt</file>
+        <file>data/Line0.txt</file>
+    </qresource>
+    <qresource prefix="/IEEE118_data">
+        <file>IEEE118_data/init.txt</file>
+        <file>IEEE118_data/loop0.txt</file>
+        <file>IEEE118_data/loop1.txt</file>
+        <file>IEEE118_data/loop2.txt</file>
+        <file>IEEE118_data/loop3.txt</file>
+        <file>IEEE118_data/loop4.txt</file>
+        <file>IEEE118_data/loop5.txt</file>
+        <file>IEEE118_data/loop6.txt</file>
+        <file>IEEE118_data/loop7.txt</file>
+        <file>IEEE118_data/loop8.txt</file>
+        <file>IEEE118_data/loop9.txt</file>
+        <file>IEEE118_data/loop10.txt</file>
+        <file>IEEE118_data/readme.docx</file>
+        <file>IEEE118_data/set.txt</file>
+    </qresource>
+</RCC>
