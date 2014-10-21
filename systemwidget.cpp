@@ -87,6 +87,7 @@ void SystemWidget::mousePressEvent(QMouseEvent *e)
             if(_loop>0&&_loop<6){
                 stateLabel->setText(QObject::tr("状态： ")+QString::number(_loop%6));
                 stateCom->addItem(QObject::tr("状态 ")+QString::number(_loop%6));
+           //     QString filename=":/data/loop"+QObject::tr("%1").arg(_loop++)+".txt";
                 QString filename=":/data/loop"+QObject::tr("%1").arg(_loop++)+".txt";
                 ReadInfo(filename,lineItems.size());
             }
