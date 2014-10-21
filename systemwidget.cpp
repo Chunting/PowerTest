@@ -47,7 +47,7 @@ SystemWidget::SystemWidget(QWidget *parent) :
     ctrlFrame->setMaximumWidth(2*Hbase);
     //ctrlFrame->setFrameRect(QRect(0,0,Hbase,Vbase));
 
-    createControlFrame(30,40,6);
+    createControlFrame(30,41,6);
     //主窗口布局
     QHBoxLayout *mainLayout = new QHBoxLayout;
     mainLayout->setObjectName("mainlayout");
@@ -78,24 +78,35 @@ void SystemWidget::mousePressEvent(QMouseEvent *e)
 {
     QTextStream out(stdout);
     QString str="("+QString::number(e->x())+","+QString::number(e->y())+")";
-    if(e->button()==Qt::LeftButton)
+    if(e->button() == Qt::LeftButton)
     {
         int straIndex=strategyCom->currentIndex()+1;
-        if(straIndex==2){
+        if(straIndex == 2){
             _auto=false;
             out<<"Here is left: "<<_loop<<endl;
             if(_loop>0&&_loop<6){
                 stateLabel->setText(QObject::tr("状态： ")+QString::number(_loop%6));
                 stateCom->addItem(QObject::tr("状态 ")+QString::number(_loop%6));
-           //     QString filename=":/data/loop"+QObject::tr("%1").arg(_loop++)+".txt";
-                QString filename=":/data/loop"+QObject::tr("%1").arg(_loop++)+".txt";
+           //   QString filename=":/data/loop"+QObject::tr("%1").arg(_loop++)+".txt";
+                QString filename = ":/data/loop"+QObject::tr("%1").arg(_loop++)+".txt";
+                ReadInfo(filename,lineItems.size());
+            }
+        }
+        if(straIndex == 1){
+            _auto=false;
+            out<<"Here is left: "<<_loop<<endl;
+            if(_loop>0 && _loop<7){
+                stateLabel->setText(QObject::tr("状态： ")+QString::number(_loop%6));
+                stateCom->addItem(QObject::tr("状态 ")+QString::number(_loop%6));
+           //   QString filename=":/data/loop"+QObject::tr("%1").arg(_loop++)+".txt";
+                QString filename = ":/Bus30_System/30_system_data/loop"+QObject::tr("%1").arg(_loop++)+".txt";
                 ReadInfo(filename,lineItems.size());
             }
         }
     }
-    else if(e->button()==Qt::RightButton)
+    else if(e->button() == Qt::RightButton)
     {
-        out<<"Here is right: "<<str<<endl;
+     //   out<<"Here is right: "<<str<<endl;
         _auto=true;
     }
 }
@@ -375,7 +386,42 @@ void SystemWidget::slotStrategy(){
 }
 void SystemWidget::slotStrategyMenu(int straIndex){
 
-    if(straIndex==2){
+    if(straIndex == 1){
+        QMessageBox msgBox;
+        // msgBox.setWindowTitle(tr("策略选择"));
+        msgBox.setText("确认使用裕度优先攻击策略？");
+        //msgBox.setInformativeText("Do you want to save your changes?");
+        msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+        msgBox.setDefaultButton(QMessageBox::Ok);
+        int ret = msgBox.exec();
+        switch (ret) {
+        case QMessageBox::Ok:
+            strategyCom->setCurrentIndex(1);
+            for(int i=1; i<7; ++i){
+                if(_auto){
+                    stateLabel->setText(QObject::tr("状态： ") + QString::number(_loop));
+                    ReadInfo( ":/Bus30_System/30_system_data/loop" + QObject::tr("%1").arg(_loop++) + ".txt", lineItems.size());
+                    stateCom->addItem(QObject::tr("状态 ") + QString::number(i));
+                    delay(3000);
+                }else{
+                    while(!_auto){
+                        delay(6000);
+                    }
+                }
+            }
+            _loop = 1;
+            break;
+        case QMessageBox::Cancel:
+            // Cancel was clicked
+            break;
+        default:
+            // should never be reached
+            break;
+        }
+        QMessageBox::information(this,tr("Evaluation"),tr("影响评估： 59.25% ！"),QMessageBox::NoButton);
+    }
+
+    if(straIndex == 2){
         QMessageBox msgBox;
         // msgBox.setWindowTitle(tr("策略选择"));
         msgBox.setText("确认使用重载优先攻击策略？");
@@ -390,7 +436,7 @@ void SystemWidget::slotStrategyMenu(int straIndex){
                 if(_auto){
                     stateLabel->setText(QObject::tr("状态： ")+QString::number(_loop));
                     ReadInfo(":/data/loop"+QObject::tr("%1").arg(_loop++)+".txt",lineItems.size());
-                    stateCom->addItem(QObject::tr("状态 ")+QString::number(i));
+                    stateCom->addItem(QObject::tr("状态 ")+QString::number(_loop));
                     delay(3000);
                 }else{
                     while(!_auto){
@@ -398,6 +444,7 @@ void SystemWidget::slotStrategyMenu(int straIndex){
                     }
                 }
             }
+             _loop = 1;
             break;
 
         case QMessageBox::Cancel:
@@ -410,7 +457,7 @@ void SystemWidget::slotStrategyMenu(int straIndex){
 
         QMessageBox::information(this,tr("Evaluation"),tr("影响评估： 93.13% ！"),QMessageBox::NoButton);
     }
-    if(straIndex==3){
+    if(straIndex == 3) {
         QMessageBox msgBox;
         // msgBox.setWindowTitle(tr("策略选择"));
         msgBox.setText("确认使用随机选择攻击策略？");
@@ -433,9 +480,8 @@ void SystemWidget::slotStrategyMenu(int straIndex){
                     }
                 }
             }
+             _loop = 1;
             QMessageBox::information(this,tr("Evaluation"),tr("影响评估： 38% ！"),QMessageBox::NoButton);
-
-
         case QMessageBox::Cancel:
             // Cancel was clicked
             break;
@@ -443,41 +489,47 @@ void SystemWidget::slotStrategyMenu(int straIndex){
             // should never be reached
             break;
         }
-
     }
 }
 void SystemWidget::slotstate(){
-    int stateIndex=stateCom->currentIndex();
-    int index=strategyCom->currentIndex();
-    _auto=false;
-    if(stateIndex==0){
+
+    int stateIndex = stateCom->currentIndex();
+    QTextStream out(stdout);
+    out << "The state num is " << stateIndex <<endl;
+    int index = strategyCom->currentIndex();
+    _auto = false;
+    if(stateIndex == 0){
         flashboom->hide();
+        flashboom_1->hide();
     }else{
         flashboom->show();
+        flashboom_1->show();
     }
     QVectorIterator<BusItem*> itbus(busItems);
     while(itbus.hasNext()){
-        BusItem* temp=itbus.next();
+        BusItem* temp = itbus.next();
         temp->setStop(false);
     }
     QVectorIterator<LineItem*> itline(lineItems);
     while(itline.hasNext()){
-        LineItem* temp=itline.next();
+        LineItem* temp = itline.next();
         temp->setStop(false);
     }
 
     QVectorIterator<GenItem*> itgen(genItems);
     while(itgen.hasNext()){
-        GenItem* temp=itgen.next();
+        GenItem* temp = itgen.next();
         temp->setStop(false);
     }
 
     stateLabel->setText(QObject::tr("状态： ")+QString::number(stateIndex));
-    QString filename=":/data/loop"+QObject::tr("%1").arg(stateIndex)+".txt";
-    if(index==2){
-        filename=":/data/Line"+QObject::tr("%1").arg(stateIndex)+".txt";
+    QString filename = ":/data/loop"+QObject::tr("%1").arg(stateIndex)+".txt";
+    if(index == 2){
+        filename = ":/data/Line"+QObject::tr("%1").arg(stateIndex)+".txt";
     }
-
+    if(index == 1){
+        filename = ":/Bus30_System/30_system_data/loop" + QObject::tr("%1").arg(stateIndex) + ".txt";
+    }
     ReadInfo(filename,lineItems.size());
 }
 void SystemWidget::delay( int millisecondsToWait )
@@ -508,6 +560,7 @@ void SystemWidget::ReadInfo(QString filename,int length){
         while (!file.atEnd()) {
             QString data = QString(file.readLine());
             if(linenum==1){
+           //     out << "This is the first line: Line paramaters." << endl;
                 QStringList v=data.split(QRegExp("\\s+"));
                 int size=v.size()-1;
                 if(size!=length){
@@ -528,22 +581,25 @@ void SystemWidget::ReadInfo(QString filename,int length){
                             linetemp->setrunstate(true);
                         }
                         else if(linef==10000){
-                            if(filename==":/data/loop1.txt"){
-                                int index=strategyCom->currentIndex();
-                                out<<"index :"<<index<<endl;
-                                flashboom=new FlashItem;
+                          //  int index=strategyCom->currentIndex();
+                          //  out<<"index :"<<index<<endl;
+                            flashboom = new FlashItem;
+                            flashboom_1 = new FlashItem;
+                            if(filename == ":/Bus30_System/30_system_data/loop1.txt"){
+                                flashboom->setPos(x1+4.5*Hbase,y1+4.15*Vbase);
+
+                                flashboom_1 -> setPos( x1+1.5*Hbase,y1+3.5*Vbase );
+                                scene->addItem(flashboom);
+                                scene->addItem(flashboom_1);
+
+                            } else if(filename==":/data/loop1.txt"){
+
                                 flashboom->setPos(x1+5.5*Hbase,y1+5.15*Vbase);
                                 scene->addItem(flashboom);
                             }else if(filename==":/data/Line1.txt"){
-
-                                int index=strategyCom->currentIndex();
-                                out<<"index :"<<index<<endl;
-                                flashboom=new FlashItem;
                                 flashboom->setPos(x1+1.7*Hbase,y1+1.4*Vbase);
                                 scene->addItem(flashboom);
-
                             }
-
                             linetemp->setStop(true);
                             --count;
                         }else{
@@ -555,23 +611,21 @@ void SystemWidget::ReadInfo(QString filename,int length){
                     }
                 }
                 //out<<endl<<"count: "<<count<<endl;
-
                 linelabel->setText(QObject::tr("线路： ")+QString::number(count));
-
                 ++linenum;
             }
             else if(linenum==2){
-                QStringList v=data.split(QRegExp("\\s+"));
-                int size=v.size()-1;
-                int count=size;
-                for(int i=0;i<size;++i){
+             //   out << "This is the seconde line: Generators paramaters." << endl;
+                QStringList v = data.split(QRegExp("\\s+"));
+                int size = v.size()-1;
+                int count = size;
+                for(int i = 0;i<size;++i){
 
-                    GenItem* gentemp=genItems[i];
-                    QString temp=v.at(i);
-                    if(filename!="init.txt"){
+                    GenItem* gentemp = genItems[i];
+                    QString temp = v.at(i);
+                    if(filename != "init.txt"){
                         gentemp->setgenCap(temp.toFloat());
                         float geni=temp.toFloat();
-
                         if(geni==0){
                             gentemp->setStop(true);
                             --count;
@@ -587,33 +641,34 @@ void SystemWidget::ReadInfo(QString filename,int length){
                 genlabel->setText(QObject::tr("机组： ")+QString::number(count));
                 ++linenum;
             }
-            else if(linenum==3){
+            else if(linenum == 3){
+              //  out << "This is the third line: Bus paramaters." << endl;
                 QStringList v=data.split(QRegExp(";"));
                 int size=v.size();
                 QVector<int> mark(30,1);
-                // out<<"quartier size: "<<size<<endl;
-                for(int q=0;q<size;++q){
-
-                    QString quatier=v.at(q);
-                    QStringList qtemp=quatier.split(QRegExp("\\s+"));
-                    int qsize=qtemp.size()-1;
-                    //  out<<"qar: "<<q<<"  bus number: "<<qsize<<endl;
-                    for(int i=0;i<qsize;++i){
-                        QString stemp=qtemp.at(i);
-                        int index=stemp.toInt()-1;
-                        BusItem* bustemp=busItems[index];
-                        bustemp->setBusquar(q);
-                        mark[index]=0;
+              //  out<< "quartier size: "<< size << endl;
+                for(int q=0; q<size; ++q) {
+                    QString quatier = v.at(q);
+                    QStringList qtemp = quatier.split(QRegExp("\\s+"));
+                    int qsize = qtemp.size() -1;
+               //     out << "qar: "<< q <<"  bus number: " << qsize << endl;
+                    for(int i=0; i<qsize; ++i) {
+                        QString stemp = qtemp.at(i);
+                        int index = stemp.toInt()-1;
+                        BusItem* bustemp = busItems[index];
+                        bustemp -> setBusquar(q);
+                        mark[index] = 0;
                         bustemp->setrunstate(true);
                         bustemp->setColor(40*q+40);
                     }
                 }
                 int count=30;
-                for(int i=0;i<30;++i){
-                    int bustemp=mark[i];
-                    if(bustemp!=0){
+                for(int i=0; i<30; ++i){
+                    int bustemp = mark[i];
+                    if(bustemp != 0){
                         --count;
                         busItems[i]->setStop(true);
+                  //      out << "Stop bus Num: "<< i <<endl;
                     }
                 }
                 buslabel->setText(QObject::tr("节点： ")+QString::number(count));
@@ -701,6 +756,7 @@ void SystemWidget::initScene_bus()
         temp->setBusnum(++busnum);
         scene->addItem(temp);
     }
+    /* Line 1 - 5 */
     lineItems.append(new LineItem(QPointF(x1+3*shortX,y6+Height),QPointF(x1+3*shortX,y6+Height+shortY),
                                   QPointF(x2+0.5*shortX,y7-shortY),QPointF(x2+0.5*shortX,y7)));
     lineItems.append(new LineItem(QPointF(x1+2*shortX,y6),QPointF(x1+2*shortX,y6-shortY),
@@ -711,6 +767,7 @@ void SystemWidget::initScene_bus()
                                   QPointF(x4+shortX,y7-0.5*shortY),QPointF(x4+shortX,y7)));
     lineItems.append(new LineItem(QPointF(x2+2.5*shortX,y7),QPointF(x2+2.5*shortX,y7-shortY),
                                   QPointF(x5+shortX,y6+Height+shortY), QPointF(x5+shortX,y6+Height)));
+    /* Line 6 - 10 */
     lineItems.append(new LineItem(QPointF(x2+3*shortX,y6), QPointF(x2+3*shortX,y6-shortY),
                                   QPointF(x3+shortX,y6-shortY),QPointF(x3+shortX,y6)));
     lineItems.append(new LineItem(QPointF(x3+3*shortX,y6),QPointF(x3+3*shortX,y6-shortY),
@@ -721,7 +778,7 @@ void SystemWidget::initScene_bus()
                                   QPointF(x5+shortX,y7-0.5*shortY),QPointF(x5+shortX,y7)));
     lineItems.append(new LineItem(QPointF(x5+2*shortX,y6+Height),QPointF(x5+2*shortX,y7)));
 
-
+    /* Line 11 - 15 */
     lineItems.append(new LineItem(QPointF(x5+3.5*shortX,y6+Height),QPointF(x5+3.5*shortX,y6+Height+shortY),
                                   QPointF(x8+shortX,y6+Height+shortY),QPointF(x8+shortX,y6+Height)));
 
@@ -731,6 +788,8 @@ void SystemWidget::initScene_bus()
     lineItems.append(new LineItem(QPointF(x5+3.5*shortX,y6),QPointF(x5+3.5*shortX,y6-0.5*shortY),
                                   QPointF(x8+shortX,y4+Height+0.5*shortY),QPointF(x8+shortX,y4+Height)));
     lineItems.append(new LineItem(QPointF(x8+2*shortX,y6),QPointF(x8+2*shortX,y4+Height)));
+
+    /* Line 16 - 20 */
     lineItems.append(new LineItem(QPointF(x5+shortX,y5+Height),QPointF(x5+shortX,y5+Height+shortY),
                                   QPointF(x4+3*shortX,y5+Height+shortY),QPointF(x4+3*shortX,y5+Height)));
     lineItems.append(new LineItem(QPointF(x5+3*shortX,y5),QPointF(x5+3*shortX,y5-shortY),
@@ -740,6 +799,7 @@ void SystemWidget::initScene_bus()
     lineItems.append(new LineItem(QPointF(x4+1.5*shortX,y5),QPointF(x4+1.5*shortX,y4+Height)));
     lineItems.append(new LineItem(QPointF(x4+2.5*shortX,y5),QPointF(x4+2.5*shortX,y5-shortY),
                                   QPointF(x5+shortX,y4+Height+shortY),QPointF(x5+shortX,y4+Height)));
+    /* Line 21 - 25 */
     lineItems.append(new LineItem(QPointF(x4+3.5*shortX,y5),QPointF(x4+3.5*shortX,y5-shortY),
                                   QPointF(x6+shortX,y4+Height+shortY),QPointF(x6+shortX,y4+Height)));
     lineItems.append(new LineItem(QPointF(x2+shortX,y5+Height),QPointF(x2+shortX,y5+Height+shortY),
@@ -749,6 +809,7 @@ void SystemWidget::initScene_bus()
     lineItems.append(new LineItem(QPointF(x2+2*shortX,y5),QPointF(x2+2*shortX,y3+Height)));
     lineItems.append(new LineItem(QPointF(x2+3*shortX,y5),QPointF(x2+3*shortX,y5-shortY),
                                   QPointF(x3+shortX,y3+Height+shortY), QPointF(x3+shortX,y3+Height)));
+    /* Line 26 - 30 */
     lineItems.append(new LineItem(QPointF(x1+2*shortX,y4),QPointF(x1+2*shortX,y4-shortY),
                                   QPointF(x2+shortX,y3+Height+shortY),QPointF(x2+shortX,y3+Height)));
 
@@ -760,6 +821,7 @@ void SystemWidget::initScene_bus()
     lineItems.append(new LineItem(QPointF(x3+2*shortX,y3+Height), QPointF(x3+2*shortX,y4)));
     lineItems.append(new LineItem(QPointF(x3+3*shortX,y2+Height),QPointF(x3+3*shortX,y2+Height+shortY),
                                   QPointF(x4+2*shortX,y3-shortY), QPointF(x4+2*shortX,y3)));
+    /* Line 31 - 35 */
     lineItems.append(new LineItem(QPointF(x4+2*shortX,y3+Height),QPointF(x4+2*shortX,y4)));
     lineItems.append(new LineItem(QPointF(x5+2*shortX,y4),QPointF(x5+2*shortX,y4-shortY),
                                   QPointF(x6+shortX,y4-shortY),QPointF(x6+shortX,y4)));
@@ -768,6 +830,7 @@ void SystemWidget::initScene_bus()
                                   QPointF(x6+2*shortX,y3-shortY),QPointF(x6+2*shortX,y3)));
     lineItems.append(new LineItem(QPointF(x6+3*shortX,y3+Height),QPointF(x6+3*shortX,y3+Height+shortY),
                                   QPointF(x7+shortX,y3+Height+shortY),QPointF(x7+shortX,y3+Height)));
+    /* Line 36 - 41 */
     lineItems.append(new LineItem(QPointF(x7+2*shortX,y3+Height),QPointF(x7+2*shortX,y4)));
     lineItems.append(new LineItem(QPointF(x7+2*shortX,y3),QPointF(x7+2*shortX,y2+Height)));
     lineItems.append(new LineItem(QPointF(x7+3*shortX,y2+Height),QPointF(x7+3*shortX,y2+Height+shortY),
@@ -777,6 +840,7 @@ void SystemWidget::initScene_bus()
                                   QPointF(x6+2*shortX,y1+Height+shortY),QPointF(x6+2*shortX,y1+Height)));
     lineItems.append(new LineItem(QPointF(x7+shortX,y1+Height),QPointF(x7+shortX,y1+Height+shortY),
                                   QPointF(x6+3*shortX,y1+Height+shortY),QPointF(x6+3*shortX,y1+Height)));
+
     gLineItems.append(new LineItem(QPointF(x1+Radius,y6+Height),QPointF(x1+Radius,y6+Height+shortY)));
     genItems.append(new GenItem(Radius,QPointF(x1,y6+Height+shortY)));
     gLineItems.append(new LineItem(QPointF(x2+Radius,y7+Height),QPointF(x2+Radius,y7+Height+shortY)));
@@ -792,7 +856,6 @@ void SystemWidget::initScene_bus()
     QVectorIterator<LineItem*> itline(lineItems);
     while(itline.hasNext()){
         LineItem* temp=itline.next();
-
         scene->addItem(temp);
     }
     QVectorIterator<LineItem*> itgline(gLineItems);

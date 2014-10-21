@@ -90,6 +90,8 @@ private:
     QVector<GenItem*> genItems;
     QVector<LineItem*> gLineItems;
     FlashItem * flashboom;
+    FlashItem * flashboom_1;
+
 
 
     QPointF *G1;
