@@ -812,20 +812,20 @@ void System118_Widget::initScene_bus()
                                   QPointF(X1+xUnit,Y1+4*yUnit)));
     /* Line 21-25 */
     lineItems.append(new LineItem(QPointF(X1+6.5*xUnit,Y1+1.5*yUnit),QPointF(X1+6.5*xUnit,Y1+7*yUnit)));
-    lineItems.append(new LineItem(QPointF(X1+0.5*xUnit,Y1+5*yUnit),QPointF(X1+5.5*xUnit,Y1+5*yUnit),
+    lineItems.append(new LineItem(QPointF(X1+xUnit,Y1+5*yUnit),QPointF(X1+5.5*xUnit,Y1+5*yUnit),
                                   QPointF(X1+5.5*xUnit,Y1+7*yUnit)));
     lineItems.append(new LineItem(QPointF(X1+6.5*xUnit,Y1+7.5*yUnit),QPointF(X1+6.5*xUnit,Y1+8*yUnit),
                                   QPointF(X1+9*xUnit,Y1+8*yUnit),QPointF(X1+9*xUnit,Y1+7.5*yUnit)));
     lineItems.append(new LineItem(QPointF(X2,Y1+7*yUnit),QPointF(X2,Y1+5.5*yUnit)));
 
     lineItems.append(new LineItem(QPointF(X2+xUnit,Y1+5.5*yUnit),QPointF(X2+xUnit,Y2+1.5*yUnit),
-                                  QPointF(X2+0.5*xUnit,Y2+1.5*yUnit)));
+                                  QPointF(X2+0.4*xUnit,Y2+1.5*yUnit)));
     /* Line 26-30 */
     lineItems.append(new LineItem(QPointF(X1+8.5*xUnit,Y1+yUnit),QPointF(X1+8.5*xUnit,Y1+2.5*yUnit),
                                   QPointF(X2+2*xUnit,Y1+2.5*yUnit),QPointF(X2+2*xUnit,Y1+5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X2+0.5*xUnit,Y2+3*yUnit),QPointF(X2+xUnit,Y2+3*yUnit),
+    lineItems.append(new LineItem(QPointF(X2+0.4*xUnit,Y2+3*yUnit),QPointF(X2+xUnit,Y2+3*yUnit),
                                   QPointF(X2+xUnit,Y2+5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X2+xUnit,Y2+5*yUnit),QPointF(X2+xUnit,Y2+7*yUnit),
+    lineItems.append(new LineItem(QPointF(X2+xUnit,Y2+5.5*yUnit),QPointF(X2+xUnit,Y2+7*yUnit),
                                   QPointF(X2+1.5*xUnit,Y2+7*yUnit)));
     lineItems.append(new LineItem(QPointF(X2+1.5*xUnit,Y2+8.5*yUnit),QPointF(X2+xUnit,Y2+8.5*yUnit),
                                   QPointF(X2+xUnit,Y3)));
@@ -871,7 +871,7 @@ void System118_Widget::initScene_bus()
     lineItems.append(new LineItem(QPointF(X3+0.5*xUnit,6.5*yUnit),QPointF(X3+0.5*xUnit,7.3*yUnit),
                                   QPointF(X3+4*xUnit,7.3*yUnit),QPointF(X3+4*xUnit,9*yUnit)));
     lineItems.append(new LineItem(QPointF(X3+2.5*xUnit,Y1+1.5*yUnit),QPointF(X3+2.5*xUnit,Y1+5*yUnit)));
-    lineItems.append(new LineItem(QPointF(X3+3.5*xUnit,Y1+yUnit),QPointF(X3+3.5*xUnit,8.5*yUnit)));
+    lineItems.append(new LineItem(QPointF(X3+3.5*xUnit,Y1+yUnit),QPointF(X3+3.5*xUnit,9.5*yUnit)));
     /* Line 51-55 */
     lineItems.append(new LineItem(QPointF(X3+5*xUnit,Y2+4*yUnit),QPointF(X3+5*xUnit,9.5*yUnit)));
     lineItems.append(new LineItem(QPointF(X3+4.5*xUnit,9*yUnit),QPointF(X3+4.5*xUnit,5.5*yUnit),
