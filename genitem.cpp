@@ -11,8 +11,9 @@ GenItem::GenItem(qreal radius,QPointF gpoint,bool up, QObject *parent) :
     _flash=true;
     _runstate=false;
      _stop=false;
-     _genCap=0;
-    _color=255;
+     _genCap=100;
+    //_color=255;
+    _chuli = 0;
     startTimer(1000);
     setPos(_gpoint);
 }
@@ -29,12 +30,15 @@ void GenItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
      QFont font;
      font.setPointSize(14);
          font.setBold(true);
-
+     int col=(int)abs((255*getratio()))%255;
+      QTextStream out(stdout);
  //   if(_runstate&&!_stop)
  //        painter->setBrush(Qt::green);
     if(_runstate&&!_stop) {
-        if( _color != 255 )
-            painter->setBrush(QColor(0.3*_color,255-_color,_color));
+        if(col <= 255 && col >= 0) {
+          //  out<<"col: "<<col<<"  255-col: "<<255-col<<endl;
+            painter->setBrush(QColor(col,255-col,0));
+        }
         else
             painter->setBrush(Qt::green);
     }
@@ -75,10 +79,18 @@ float GenItem::getgenCap(){
 void GenItem::setRadius(qreal radius){
     _radius=radius;
 }
-void GenItem::setColor(int color){
-    if(color!=0)
-        _color=color;
+
+float GenItem::getratio(){
+     QTextStream out(stdout);
+    // out << "Chuli: " << _chuli <<" genCap: " << _genCap << endl;
+    if(_chuli != 0 && _chuli < _genCap && _genCap != 0) {
+        return (_chuli)/(_genCap);
+    }
+    return 0;
 }
-int GenItem::getColor(){
-    return _color;
+void GenItem::setChuli(float chuli) {
+    _chuli = chuli;
+}
+float GenItem:: getChuli() {
+    return _chuli;
 }

@@ -77,11 +77,9 @@ SystemWidget::SystemWidget(QWidget *parent) :
 void SystemWidget::mousePressEvent(QMouseEvent *e)
 {
     QTextStream out(stdout);
- //   QString str="("+QString::number(e->x())+","+QString::number(e->y())+")";
+    int straIndex = strategyCom->currentIndex()+1;
     if(e->button() == Qt::LeftButton)
     {
-        int straIndex=strategyCom->currentIndex()+1;
-    //    out<<"Here is left for straIndex: "<<straIndex<<endl;
         if(straIndex == 2){
             _auto=false;
             if(_loop>0 && _loop<6){
@@ -109,8 +107,25 @@ void SystemWidget::mousePressEvent(QMouseEvent *e)
     }
     else if(e->button() == Qt::RightButton)
     {
-     //   out<<"Here is right: "<<str<<endl;
+        //   out<<"Here is right: "<<str<<endl;
         _auto=true;
+        if( straIndex == 1 ) {
+            while(_auto && _loop < 7) {
+             //   if(){
+                    stateLabel->setText(QObject::tr("状态： ") + QString::number(_loop));
+                    ReadInfo( ":/Bus30_System/30_system_data/loop" + QObject::tr("%1").arg(_loop++) + ".txt", lineItems.size());
+                    stateCom->addItem(QObject::tr("状态 ") + QString::number(_loop - 1));
+                    if( _loop == 4 ) {
+                        QMessageBox msgBox;
+                        msgBox.setText("对方策略发生改变，重新计算攻击点...");
+                        msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+                        msgBox.setDefaultButton(QMessageBox::Ok);
+
+                        int ret = msgBox.exec();
+                    }
+                    delay(3000);
+            }
+        }
     }
 }
 
@@ -386,7 +401,7 @@ void SystemWidget::slotScale(int value)
 }
 void SystemWidget::slotStrategy(){
     int straIndex=strategyCom->currentIndex()+1;
-  //  out << "Here is straIndex： " << straIndex <<endl;
+    //  out << "Here is straIndex： " << straIndex <<endl;
     slotStrategyMenu(straIndex);
 }
 void SystemWidget::slotStrategyMenu(int straIndex){
@@ -414,7 +429,6 @@ void SystemWidget::slotStrategyMenu(int straIndex){
 
                         int ret = msgBox.exec();
                     }
-
                     delay(3000);
                 }else{
                     while(!_auto){
@@ -424,7 +438,7 @@ void SystemWidget::slotStrategyMenu(int straIndex){
             }
             _loop = 1;
             break;
-             QMessageBox::information(this,tr("Evaluation"),tr("影响评估： 59.25% ！"),QMessageBox::NoButton);
+            QMessageBox::information(this,tr("Evaluation"),tr("影响评估： 59.25% ！"),QMessageBox::NoButton);
         case QMessageBox::Cancel:
             // Cancel was clicked
             break;
@@ -457,9 +471,9 @@ void SystemWidget::slotStrategyMenu(int straIndex){
                     }
                 }
             }
-             _loop = 1;
+            _loop = 1;
             QMessageBox::information(this,tr("Evaluation"),tr("影响评估： 93.13% ！"),QMessageBox::NoButton);
-            break;    
+            break;
         case QMessageBox::Cancel:
             // Cancel was clicked
             break;
@@ -491,7 +505,7 @@ void SystemWidget::slotStrategyMenu(int straIndex){
                     }
                 }
             }
-             _loop = 1;
+            _loop = 1;
             QMessageBox::information(this,tr("Evaluation"),tr("影响评估： 38% ！"),QMessageBox::NoButton);
         case QMessageBox::Cancel:
             // Cancel was clicked
@@ -507,7 +521,7 @@ void SystemWidget::slotstate(){
     int stateIndex = stateCom->currentIndex();
     QTextStream out(stdout);
     int index = strategyCom->currentIndex() + 1;
-     out << "The state num is " << stateIndex <<endl;
+    out << "The state num is " << stateIndex <<endl;
 
     _auto = false;
     if(stateIndex == 0){
@@ -574,7 +588,7 @@ void SystemWidget::ReadInfo(QString filename,int length){
         while (!file.atEnd()) {
             QString data = QString(file.readLine());
             if(linenum==1){
-           //     out << "This is the first line: Line paramaters." << endl;
+                //     out << "This is the first line: Line paramaters." << endl;
                 QStringList v=data.split(QRegExp("\\s+"));
                 int size=v.size()-1;
                 if(size!=length){
@@ -587,7 +601,7 @@ void SystemWidget::ReadInfo(QString filename,int length){
                 for(int i=0;i<size;++i){
                     LineItem* linetemp=lineItems[i];
                     QString temp=v.at(i);
-                    if(filename!="init.txt"){
+                    if(filename!=":/data/init.txt"){
                         linetemp->setLineCap(temp.toFloat());
                         float linef=temp.toFloat();
                         if(linef<9999&&linef!=0){
@@ -595,8 +609,8 @@ void SystemWidget::ReadInfo(QString filename,int length){
                             linetemp->setrunstate(true);
                         }
                         else if(linef==10000){
-                          //  int index=strategyCom->currentIndex();
-                          //  out<<"index :"<<index<<endl;
+                            //  int index=strategyCom->currentIndex();
+                            //  out<<"index :"<<index<<endl;
 
                             if(filename == ":/Bus30_System/30_system_data/loop1.txt"){
                                 flashboom = new FlashItem;
@@ -627,50 +641,47 @@ void SystemWidget::ReadInfo(QString filename,int length){
                         linetemp->setupLineCap(temp.toFloat());
                     }
                 }
-                //out<<endl<<"count: "<<count<<endl;
                 linelabel->setText(QObject::tr("线路： ")+QString::number(count));
                 ++linenum;
             }
             else if(linenum==2){
-             //   out << "This is the seconde line: Generators paramaters." << endl;
                 QStringList v = data.split(QRegExp("\\s+"));
                 int size = v.size()-1;
                 int count = size;
                 for(int i = 0;i<size;++i){
-
                     GenItem* gentemp = genItems[i];
                     QString temp = v.at(i);
-                    if(filename != "init.txt"){
-                        gentemp->setgenCap(temp.toFloat());
+                    if(filename != ":/data/init.txt"){
                         float geni=temp.toFloat();
                         if(geni==0){
                             gentemp->setStop(true);
+                            gentemp->setChuli(0);
                             --count;
                         }
                         else{
                             gentemp->setStart(true);
                             gentemp->setrunstate(true);
+                            gentemp->setChuli(temp.toFloat());
+                            //   out << "chuli / genCap: " << temp.toFloat() <<"  " << gentemp->getgenCap() << endl;
                         }
                     }else{
                         gentemp->setgenCap(temp.toFloat());
+                        //  out << "genCap from init.txt: " << temp.toFloat() << endl;
                     }
                 }
                 genlabel->setText(QObject::tr("机组： ")+QString::number(count));
                 ++linenum;
             }
             else if(linenum == 3){
-              //  out << "This is the third line: Bus paramaters." << endl;
+                //  out << "This is the third line: Bus paramaters." << endl;
                 QStringList v=data.split(QRegExp(";"));
                 int size=v.size();
                 QVector<int> mark(30,1);
-              //  out<< "quartier size: "<< size << endl;
+                //  out<< "quartier size: "<< size << endl;
                 for(int q=0; q<size; ++q) {
                     QString quatier = v.at(q);
-
                     QStringList qtemp = quatier.split(QRegularExpression("\\s+"));
                     int qsize = qtemp.size() - 1;
-                    out << "qar: "<< q <<"  bus number: " << qsize << endl;
-                    out << "quatier: " << quatier << endl;
                     for(int i=0; i<qsize; ++i) {
                         QString stemp = qtemp.at(i);
                         int index = stemp.toInt()-1;
@@ -687,7 +698,7 @@ void SystemWidget::ReadInfo(QString filename,int length){
                     if(bustemp != 0){
                         --count;
                         busItems[i]->setStop(true);
-                  //      out << "Stop bus Num: "<< i <<endl;
+                        //      out << "Stop bus Num: "<< i <<endl;
                     }
                 }
                 buslabel->setText(QObject::tr("节点： ")+QString::number(count));
