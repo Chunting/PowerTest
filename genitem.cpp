@@ -12,6 +12,7 @@ GenItem::GenItem(qreal radius,QPointF gpoint,bool up, QObject *parent) :
     _runstate=false;
      _stop=false;
      _genCap=0;
+    _color=255;
     startTimer(1000);
     setPos(_gpoint);
 }
@@ -29,8 +30,14 @@ void GenItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
      font.setPointSize(14);
          font.setBold(true);
 
-    if(_runstate&&!_stop)
-         painter->setBrush(Qt::green);
+ //   if(_runstate&&!_stop)
+ //        painter->setBrush(Qt::green);
+    if(_runstate&&!_stop) {
+        if( _color != 255 )
+            painter->setBrush(QColor(0.3*_color,255-_color,_color));
+        else
+            painter->setBrush(Qt::green);
+    }
     if(_stop){
 //        painter->setBrush(_flash?(Qt::yellow):(Qt::red));
         painter->drawEllipse(QRectF(0,0,2*_radius, 2*_radius));
@@ -67,4 +74,11 @@ float GenItem::getgenCap(){
 }
 void GenItem::setRadius(qreal radius){
     _radius=radius;
+}
+void GenItem::setColor(int color){
+    if(color!=0)
+        _color=color;
+}
+int GenItem::getColor(){
+    return _color;
 }

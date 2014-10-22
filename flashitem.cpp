@@ -11,7 +11,7 @@ FlashItem::FlashItem(QObject *parent) :
 QRectF FlashItem::boundingRect() const
 {
     qreal adjust = 2;
-    return QRectF(-10-adjust,-10-adjust,50+adjust,50+adjust);
+    return QRectF(-10-adjust,-10-adjust,35+adjust,35+adjust);
 }
 
 void FlashItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)

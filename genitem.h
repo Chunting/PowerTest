@@ -20,6 +20,8 @@ public:
     void setStart(bool start);
     void setStop(bool stop);
     void setrunstate(bool runstate);
+    void setColor(int color);
+    int getColor();
     void setgenCap(float gencap);
     float getgenCap();
     void setRadius(qreal radius);
@@ -39,6 +41,7 @@ private:
     qreal _radius;
     LineItem* _gline;
     float _genCap;
+    int _color;
 
 };
 

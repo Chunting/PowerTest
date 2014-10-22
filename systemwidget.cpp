@@ -77,29 +77,32 @@ SystemWidget::SystemWidget(QWidget *parent) :
 void SystemWidget::mousePressEvent(QMouseEvent *e)
 {
     QTextStream out(stdout);
-    QString str="("+QString::number(e->x())+","+QString::number(e->y())+")";
+ //   QString str="("+QString::number(e->x())+","+QString::number(e->y())+")";
     if(e->button() == Qt::LeftButton)
     {
         int straIndex=strategyCom->currentIndex()+1;
+    //    out<<"Here is left for straIndex: "<<straIndex<<endl;
         if(straIndex == 2){
             _auto=false;
-            out<<"Here is left: "<<_loop<<endl;
-            if(_loop>0&&_loop<6){
+            if(_loop>0 && _loop<6){
                 stateLabel->setText(QObject::tr("状态： ")+QString::number(_loop%6));
-                stateCom->addItem(QObject::tr("状态 ")+QString::number(_loop%6));
-           //   QString filename=":/data/loop"+QObject::tr("%1").arg(_loop++)+".txt";
-                QString filename = ":/data/loop"+QObject::tr("%1").arg(_loop++)+".txt";
+                int count = stateCom->count();
+                if( count >= 0 && count <=7 )
+                    stateCom->addItem(QObject::tr("状态 ")+QString::number(_loop%6));
+                QString filename = ":/data/loop"+QObject::tr("%1").arg(_loop - 1) + ".txt";
+                _loop++;
                 ReadInfo(filename,lineItems.size());
             }
         }
         if(straIndex == 1){
             _auto=false;
-            out<<"Here is left: "<<_loop<<endl;
             if(_loop>0 && _loop<7){
-                stateLabel->setText(QObject::tr("状态： ")+QString::number(_loop%6));
-                stateCom->addItem(QObject::tr("状态 ")+QString::number(_loop%6));
-           //   QString filename=":/data/loop"+QObject::tr("%1").arg(_loop++)+".txt";
-                QString filename = ":/Bus30_System/30_system_data/loop"+QObject::tr("%1").arg(_loop++)+".txt";
+                stateLabel->setText(QObject::tr("状态： ")+QString::number(_loop%7));
+                int count = stateCom->count();
+                if( count >= 0 && count <=7 )
+                    stateCom->addItem(QObject::tr("状态 ")+QString::number(_loop%7));
+                QString filename = ":/Bus30_System/30_system_data/loop"+QObject::tr("%1").arg(_loop-1)+".txt";
+                _loop++;
                 ReadInfo(filename,lineItems.size());
             }
         }
@@ -368,6 +371,7 @@ void SystemWidget::slotClear()        	//清除场景中所有的图元
         scene->removeItem(listItem.at(0));
         listItem.removeAt(0);
     }
+    _loop = 0;
     initScene_bus();
 }
 void SystemWidget::slotScale(int value)
@@ -382,13 +386,13 @@ void SystemWidget::slotScale(int value)
 }
 void SystemWidget::slotStrategy(){
     int straIndex=strategyCom->currentIndex()+1;
+  //  out << "Here is straIndex： " << straIndex <<endl;
     slotStrategyMenu(straIndex);
 }
 void SystemWidget::slotStrategyMenu(int straIndex){
 
     if(straIndex == 1){
         QMessageBox msgBox;
-        // msgBox.setWindowTitle(tr("策略选择"));
         msgBox.setText("确认使用裕度优先攻击策略？");
         //msgBox.setInformativeText("Do you want to save your changes?");
         msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
@@ -396,12 +400,21 @@ void SystemWidget::slotStrategyMenu(int straIndex){
         int ret = msgBox.exec();
         switch (ret) {
         case QMessageBox::Ok:
-            strategyCom->setCurrentIndex(1);
+            strategyCom->setCurrentIndex(0);
             for(int i=1; i<7; ++i){
                 if(_auto){
                     stateLabel->setText(QObject::tr("状态： ") + QString::number(_loop));
                     ReadInfo( ":/Bus30_System/30_system_data/loop" + QObject::tr("%1").arg(_loop++) + ".txt", lineItems.size());
-                    stateCom->addItem(QObject::tr("状态 ") + QString::number(i));
+                    stateCom->addItem(QObject::tr("状态 ") + QString::number(_loop - 1));
+                    if( _loop == 4 ) {
+                        QMessageBox msgBox;
+                        msgBox.setText("对方策略发生改变，重新计算攻击点...");
+                        msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+                        msgBox.setDefaultButton(QMessageBox::Ok);
+
+                        int ret = msgBox.exec();
+                    }
+
                     delay(3000);
                 }else{
                     while(!_auto){
@@ -411,6 +424,7 @@ void SystemWidget::slotStrategyMenu(int straIndex){
             }
             _loop = 1;
             break;
+             QMessageBox::information(this,tr("Evaluation"),tr("影响评估： 59.25% ！"),QMessageBox::NoButton);
         case QMessageBox::Cancel:
             // Cancel was clicked
             break;
@@ -418,12 +432,11 @@ void SystemWidget::slotStrategyMenu(int straIndex){
             // should never be reached
             break;
         }
-        QMessageBox::information(this,tr("Evaluation"),tr("影响评估： 59.25% ！"),QMessageBox::NoButton);
+
     }
 
     if(straIndex == 2){
         QMessageBox msgBox;
-        // msgBox.setWindowTitle(tr("策略选择"));
         msgBox.setText("确认使用重载优先攻击策略？");
         //msgBox.setInformativeText("Do you want to save your changes?");
         msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
@@ -445,8 +458,8 @@ void SystemWidget::slotStrategyMenu(int straIndex){
                 }
             }
              _loop = 1;
-            break;
-
+            QMessageBox::information(this,tr("Evaluation"),tr("影响评估： 93.13% ！"),QMessageBox::NoButton);
+            break;    
         case QMessageBox::Cancel:
             // Cancel was clicked
             break;
@@ -454,8 +467,6 @@ void SystemWidget::slotStrategyMenu(int straIndex){
             // should never be reached
             break;
         }
-
-        QMessageBox::information(this,tr("Evaluation"),tr("影响评估： 93.13% ！"),QMessageBox::NoButton);
     }
     if(straIndex == 3) {
         QMessageBox msgBox;
@@ -495,12 +506,15 @@ void SystemWidget::slotstate(){
 
     int stateIndex = stateCom->currentIndex();
     QTextStream out(stdout);
-    out << "The state num is " << stateIndex <<endl;
-    int index = strategyCom->currentIndex();
+    int index = strategyCom->currentIndex() + 1;
+     out << "The state num is " << stateIndex <<endl;
+
     _auto = false;
     if(stateIndex == 0){
         flashboom->hide();
         flashboom_1->hide();
+
+        out << "Here is the strategyCom :" << index  <<endl;
     }else{
         flashboom->show();
         flashboom_1->show();
@@ -583,20 +597,23 @@ void SystemWidget::ReadInfo(QString filename,int length){
                         else if(linef==10000){
                           //  int index=strategyCom->currentIndex();
                           //  out<<"index :"<<index<<endl;
-                            flashboom = new FlashItem;
-                            flashboom_1 = new FlashItem;
-                            if(filename == ":/Bus30_System/30_system_data/loop1.txt"){
-                                flashboom->setPos(x1+4.5*Hbase,y1+4.15*Vbase);
 
-                                flashboom_1 -> setPos( x1+1.5*Hbase,y1+3.5*Vbase );
+                            if(filename == ":/Bus30_System/30_system_data/loop1.txt"){
+                                flashboom = new FlashItem;
+                                flashboom_1 = new FlashItem;
+                                flashboom->setPos(x1+4.6*Hbase,y1+2.6*Vbase);
+                                flashboom_1 -> setPos( x1+0.8*Hbase,y1+4.25*Vbase );
                                 scene->addItem(flashboom);
                                 scene->addItem(flashboom_1);
 
                             } else if(filename==":/data/loop1.txt"){
-
+                                flashboom = new FlashItem;
+                                flashboom_1 = new FlashItem;
                                 flashboom->setPos(x1+5.5*Hbase,y1+5.15*Vbase);
                                 scene->addItem(flashboom);
                             }else if(filename==":/data/Line1.txt"){
+                                flashboom = new FlashItem;
+                                flashboom_1 = new FlashItem;
                                 flashboom->setPos(x1+1.7*Hbase,y1+1.4*Vbase);
                                 scene->addItem(flashboom);
                             }
@@ -649,9 +666,11 @@ void SystemWidget::ReadInfo(QString filename,int length){
               //  out<< "quartier size: "<< size << endl;
                 for(int q=0; q<size; ++q) {
                     QString quatier = v.at(q);
-                    QStringList qtemp = quatier.split(QRegExp("\\s+"));
-                    int qsize = qtemp.size() -1;
-               //     out << "qar: "<< q <<"  bus number: " << qsize << endl;
+
+                    QStringList qtemp = quatier.split(QRegularExpression("\\s+"));
+                    int qsize = qtemp.size() - 1;
+                    out << "qar: "<< q <<"  bus number: " << qsize << endl;
+                    out << "quatier: " << quatier << endl;
                     for(int i=0; i<qsize; ++i) {
                         QString stemp = qtemp.at(i);
                         int index = stemp.toInt()-1;
