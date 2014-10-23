@@ -45,6 +45,10 @@ SystemWidget::SystemWidget(QWidget *parent) :
     view->setMinimumSize(400,400);
     ctrlFrame = new QFrame;
     ctrlFrame->setMaximumWidth(2*Hbase);
+    flashboom = new FlashItem;
+    flashboom_1 = new FlashItem;
+    flashboom_2 = new FlashItem;
+    flashboom_3 = new FlashItem;
     //ctrlFrame->setFrameRect(QRect(0,0,Hbase,Vbase));
 
     createControlFrame(30,41,6);
@@ -110,7 +114,7 @@ void SystemWidget::mousePressEvent(QMouseEvent *e)
                 ReadInfo(filename,lineItems.size());
             }
         }
-        if(straIndex == 4){
+        if(straIndex == 1){
             _auto=false;
             if(_loop>0 && _loop<7){
                 stateLabel->setText(QObject::tr("状态： ")+QString::number(_loop));
@@ -213,10 +217,10 @@ void SystemWidget::createControlFrame(int busnum,int linenum,int gennum)
 
     QLabel *strategLabel =new QLabel(tr("策略选择："));
     strategyCom=new QComboBox;
-    strategyCom->addItem(tr("裕度"));
+    strategyCom->addItem(tr("博弈"));
     strategyCom->addItem(tr("重载"));
     strategyCom->addItem(tr("随机"));
-    strategyCom->addItem(tr("博弈"));
+   // strategyCom->addItem(tr("博弈"));
     QHBoxLayout *straLayout = new QHBoxLayout;
     straLayout->addWidget(strategLabel);
     straLayout->addWidget(strategyCom);
@@ -443,7 +447,7 @@ void SystemWidget::slotStrategy(){
 }
 void SystemWidget::slotStrategyMenu(int straIndex){
 
-    if(straIndex == 4){
+    if(straIndex == 1){
         QMessageBox msgBox;
         msgBox.setText("确认使用博弈攻击策略？");
         //msgBox.setInformativeText("Do you want to save your changes?");
@@ -465,13 +469,6 @@ void SystemWidget::slotStrategyMenu(int straIndex){
                     if( count >= 0 && count < 7 )
                         stateCom->addItem(QObject::tr("状态 ") + QString::number(_loop-1));
                     if( _loop == 4 ) {
-                        /*
-                        QMessageBox msgBox;
-                        msgBox.setIcon(QMessageBox::Information);
-                        msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
-                        msgBox.setText("对方采取应急措施，正在重新计算攻击点......");
-                        int ret = msgBox.exec();
-                        */
                         QMessageBox *msgBox = new QMessageBox( QMessageBox::Information, "提示",
                                    "对方采取应急措施，正在重新计算攻击点......", QMessageBox::Ok);
                         QTimer *msgBoxCloseTimer = new QTimer( this );
@@ -483,7 +480,25 @@ void SystemWidget::slotStrategyMenu(int straIndex){
 
                         QMessageBox *msgBox1 = new QMessageBox( QMessageBox::Information, "提示",
                                    "计算完毕，选中目标，准备再次攻击？", QMessageBox::Ok | QMessageBox::Cancel);
-                        msgBox1->exec();
+                        int ret = msgBox1->exec();
+                        switch (ret) {
+                        case QMessageBox::Ok:
+                         //  flashboom_2 = new FlashItem;
+                         //  flashboom_3 = new FlashItem;
+                           flashboom_2->setPos(x1+5.85*Hbase,y1+2.26*Vbase);
+                           flashboom_3 -> setPos( x1+1.2*Hbase,y1+3.2*Vbase );
+                           scene->addItem(flashboom_2);
+                           scene->addItem(flashboom_3);
+
+                            break;
+                        case QMessageBox::Cancel:
+                            // Cancel was clicked
+                            break;
+                        default:
+                            // should never be reached
+                            break;
+                        }
+
                     }
                     delay(3000);
                 }else{
@@ -586,18 +601,24 @@ void SystemWidget::slotstate(){
 
     int stateIndex = stateCom->currentIndex();
     QTextStream out(stdout);
-    int index = strategyCom->currentIndex() + 1;
+    int straIndex = strategyCom->currentIndex() + 1;
     out << "The state num is " << stateIndex <<endl;
-
+    out << "Here is the strategyCom :" << straIndex  <<endl;
     _auto = false;
     if(stateIndex == 0){
         flashboom->hide();
         flashboom_1->hide();
 
-        out << "Here is the strategyCom :" << index  <<endl;
     }else{
         flashboom->show();
         flashboom_1->show();
+    }
+    if( stateIndex < 4 ) {
+        flashboom_2->hide();
+        flashboom_3->hide();
+    } else {
+        flashboom_2->show();
+        flashboom_3->show();
     }
     QVectorIterator<BusItem*> itbus(busItems);
     while(itbus.hasNext()){
@@ -618,10 +639,10 @@ void SystemWidget::slotstate(){
 
     stateLabel->setText(QObject::tr("状态： ")+QString::number(stateIndex));
     QString filename = ":/data/loop"+QObject::tr("%1").arg(stateIndex)+".txt";
-    if(index == 2){
+    if(straIndex == 3){
         filename = ":/data/Line"+QObject::tr("%1").arg(stateIndex)+".txt";
     }
-    if(index == 1){
+    if(straIndex == 1){
         filename = ":/Bus30_System/30_system_data/loop" + QObject::tr("%1").arg(stateIndex) + ".txt";
     }
     ReadInfo(filename,lineItems.size());
@@ -676,21 +697,20 @@ void SystemWidget::ReadInfo(QString filename,int length){
                         }
                         else if(linef==10000){
                             if(filename == ":/Bus30_System/30_system_data/loop1.txt"){
-                                flashboom = new FlashItem;
-                                flashboom_1 = new FlashItem;
+
                                 flashboom->setPos(x1+4.6*Hbase,y1+2.6*Vbase);
                                 flashboom_1 -> setPos( x1+0.8*Hbase,y1+4.25*Vbase );
                                 scene->addItem(flashboom);
                                 scene->addItem(flashboom_1);
 
                             } else if(filename==":/data/loop1.txt"){
-                                flashboom = new FlashItem;
-                                flashboom_1 = new FlashItem;
+                              //  flashboom = new FlashItem;
+                              //  flashboom_1 = new FlashItem;
                                 flashboom->setPos(x1+5.5*Hbase,y1+5.15*Vbase);
                                 scene->addItem(flashboom);
                             }else if(filename==":/data/Line1.txt"){
-                                flashboom = new FlashItem;
-                                flashboom_1 = new FlashItem;
+                              //  flashboom = new FlashItem;
+                              //  flashboom_1 = new FlashItem;
                                 flashboom->setPos(x1+1.7*Hbase,y1+1.4*Vbase);
                                 scene->addItem(flashboom);
                             }

@@ -94,6 +94,8 @@ private:
     QVector<LineItem*> gLineItems;
     FlashItem * flashboom;
     FlashItem * flashboom_1;
+    FlashItem * flashboom_2;
+    FlashItem * flashboom_3;
 
 
 
