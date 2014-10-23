@@ -57,8 +57,9 @@ SystemWidget::SystemWidget(QWidget *parent) :
     mainLayout->addWidget(view);
 
     QVBoxLayout *vLayout = new QVBoxLayout;
+    QVBoxLayout *labellayout = new QVBoxLayout;
     QFont font;
-    font.setPointSize(48);
+    font.setPointSize(32);
     font.setBold(true);
     QPalette pa;
     pa.setColor(QPalette::WindowText,Qt::red);
@@ -67,11 +68,28 @@ SystemWidget::SystemWidget(QWidget *parent) :
     label->setFont(font);
     label->setAlignment(Qt::AlignCenter);
     label->setFrameShape(QFrame::StyledPanel);
-    label->setText("电网异常状态传播仿真系统");
+    label->setText("电网异常状态传播仿真系统 (IEEE-30 Bus Systems)");
     label->setPalette(pa);
-    vLayout->addWidget(label);
+    labellayout->addWidget(label);
+    QFont font2;
+    font2.setPointSize(12);
+    font2.setBold(true);
+    QPalette pa2;
+    pa2.setColor(QPalette::WindowText,Qt::blue);
+    label2 = new QLabel;
+    label2->setObjectName(QStringLiteral("label"));
+    label2->setFont(font2);
+    label2->setAlignment(Qt::AlignCenter);
+   // label2->setFrameShape(QFrame::StyledPanel);
+    label2->setText("策略");
+    label2->setPalette(pa2);
+    label2->hide();
+    labellayout->addWidget(label2);
+  //  vLayout->addWidget(label);
+    vLayout->addLayout(labellayout);
     vLayout->addLayout(mainLayout);
     setLayout(vLayout);
+
     setWindowTitle(tr("Power Flow Test"));   //设置主窗体的标题
 }
 void SystemWidget::mousePressEvent(QMouseEvent *e)
@@ -436,6 +454,9 @@ void SystemWidget::slotStrategyMenu(int straIndex){
         case QMessageBox::Ok:
             strategyCom->setCurrentIndex(0);
             stralabel->setText(QObject::tr("博弈演示"));
+            label2->setText(QObject::tr("博弈演示"));
+            label2->show();
+
             for(int i=1; i<7; ++i){
                 if(_auto){
                     stateLabel->setText(QObject::tr("状态： ") + QString::number(_loop%7));
@@ -461,7 +482,7 @@ void SystemWidget::slotStrategyMenu(int straIndex){
                         msgBox->exec();
 
                         QMessageBox *msgBox1 = new QMessageBox( QMessageBox::Information, "提示",
-                                   "计算完毕，以选中目标，准备再次攻击？", QMessageBox::Ok | QMessageBox::Cancel);
+                                   "计算完毕，选中目标，准备再次攻击？", QMessageBox::Ok | QMessageBox::Cancel);
                         msgBox1->exec();
                     }
                     delay(3000);
@@ -494,7 +515,9 @@ void SystemWidget::slotStrategyMenu(int straIndex){
         switch (ret) {
         case QMessageBox::Ok:
             strategyCom->setCurrentIndex(1);
-            stralabel->setText(QObject::tr("重载策略攻击演示"));
+            stralabel->setText(QObject::tr("重载攻击策略演示"));
+            label2->setText(QObject::tr("重载攻击策略演示"));
+            label2->show();
             for(int i=1;i<6;++i){
                 if(_auto){
                     stateLabel->setText(QObject::tr("状态： ")+QString::number(_loop%6));
@@ -531,7 +554,9 @@ void SystemWidget::slotStrategyMenu(int straIndex){
         switch (ret) {
         case QMessageBox::Ok:
             strategyCom->setCurrentIndex(2);
-            stralabel->setText(QObject::tr("随机策略攻击演示"));
+            stralabel->setText(QObject::tr("随机攻击策略演示"));
+            label2->setText(QObject::tr("随机攻击策略演示"));
+            label2->show();
             for(int i=1;i<7;++i){
                 if(_auto){
                     stateLabel->setText(QObject::tr("状态： ")+QString::number(_loop%7));

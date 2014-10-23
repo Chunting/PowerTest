@@ -85,6 +85,7 @@ private:
     QLabel *breakLabel;
     QLabel *stateLabel;
     QLabel* label;
+    QLabel* label2;
     bool pause;
 
     QVector<BusItem*> busItems;
