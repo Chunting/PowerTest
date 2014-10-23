@@ -38,12 +38,13 @@
     </qresource>
     <qresource prefix="/Bus30_System">
         <file>30_system_data/evaluation.txt</file>
-        <file>30_system_data/loop0.txt</file>
         <file>30_system_data/loop1.txt</file>
         <file>30_system_data/loop2.txt</file>
         <file>30_system_data/loop3.txt</file>
-        <file>30_system_data/loop4.txt</file>
+        <file>30_system_data/loop0.txt</file>
         <file>30_system_data/loop5.txt</file>
         <file>30_system_data/loop6.txt</file>
+        <file>30_system_data/loop7.txt</file>
+        <file>30_system_data/loop4.txt</file>
     </qresource>
 </RCC>

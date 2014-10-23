@@ -22,7 +22,7 @@ void FlashItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 
     QPolygonF polyline;
     polyline.append(QPointF(0, 0));
-    polyline.append(QPointF(20, 20));
+    polyline.append(QPointF(18, 18));
 //    polyline.append(QPointF(25, 0));
 //    polyline.append(QPointF(0, 25));
     QPainterPath* path = new QPainterPath();
@@ -31,8 +31,8 @@ void FlashItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
     painter->drawPath(*path);
 
     QPolygonF polyline1;
-    polyline1.append(QPointF(20, 0));
-    polyline1.append(QPointF(0, 20));
+    polyline1.append(QPointF(18, 0));
+    polyline1.append(QPointF(0, 18));
 //    polyline1.append(QPointF(25, 0));
 //    polyline1.append(QPointF(0, 25));
     QPainterPath* path1 = new QPainterPath();
