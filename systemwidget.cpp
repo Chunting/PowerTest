@@ -85,20 +85,20 @@ void SystemWidget::mousePressEvent(QMouseEvent *e)
             if(_loop>0 && _loop<6){
                 stateLabel->setText(QObject::tr("状态： ")+QString::number(_loop%6));
                 int count = stateCom->count();
-                if( count >= 0 && count <=7 )
+                if( count >= 0 && count < 6 )
                     stateCom->addItem(QObject::tr("状态 ")+QString::number(_loop%6));
-                QString filename = ":/data/loop"+QObject::tr("%1").arg(_loop - 1) + ".txt";
+                QString filename = ":/data/loop"+QObject::tr("%1").arg(_loop) + ".txt";
                 _loop++;
                 ReadInfo(filename,lineItems.size());
             }
         }
-        if(straIndex == 1){
+        if(straIndex == 4){
             _auto=false;
             if(_loop>0 && _loop<7){
-                stateLabel->setText(QObject::tr("状态： ")+QString::number(_loop%7));
+                stateLabel->setText(QObject::tr("状态： ")+QString::number(_loop));
                 int count = stateCom->count();
-                if( count >= 0 && count <=7 )
-                    stateCom->addItem(QObject::tr("状态 ")+QString::number(_loop%7));
+                if( count >= 0 && count < 7 )
+                    stateCom->addItem(QObject::tr("状态 ")+QString::number(_loop));
                 QString filename = ":/Bus30_System/30_system_data/loop"+QObject::tr("%1").arg(_loop-1)+".txt";
                 _loop++;
                 ReadInfo(filename,lineItems.size());
@@ -109,23 +109,42 @@ void SystemWidget::mousePressEvent(QMouseEvent *e)
     {
         //   out<<"Here is right: "<<str<<endl;
         _auto=true;
-        if( straIndex == 1 ) {
-            while(_auto && _loop < 7) {
-             //   if(){
-                    stateLabel->setText(QObject::tr("状态： ") + QString::number(_loop));
-                    ReadInfo( ":/Bus30_System/30_system_data/loop" + QObject::tr("%1").arg(_loop++) + ".txt", lineItems.size());
-                    stateCom->addItem(QObject::tr("状态 ") + QString::number(_loop - 1));
+        /*
+        if( straIndex == 4 ) {
+            while(_auto && _loop < 7 && _loop > 0) {
+                    stateLabel->setText(QObject::tr("状态： ") + QString::number(_loop%7));
+                    ReadInfo( ":/Bus30_System/30_system_data/loop" + QObject::tr("%1").arg(_loop) + ".txt", lineItems.size());
+                    int count = stateCom->count();
+                    if( count >= 0 && count <=7 )
+                        stateCom->addItem(QObject::tr("状态 ") + QString::number(_loop%7));
                     if( _loop == 4 ) {
                         QMessageBox msgBox;
                         msgBox.setText("对方策略发生改变，重新计算攻击点...");
                         msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
                         msgBox.setDefaultButton(QMessageBox::Ok);
-
                         int ret = msgBox.exec();
                     }
+                    ++_loop;
                     delay(3000);
             }
+        } else if( straIndex == 2 ) {
+            while(_auto && _loop < 6) {
+                    stateLabel->setText(QObject::tr("状态： ") + QString::number(_loop%6));
+                    ReadInfo( ":/data/loop" + QObject::tr("%1").arg(_loop++) + ".txt", lineItems.size());
+                    int count = stateCom->count();
+                    if( count >= 0 && count <=6 )
+                        stateCom->addItem(QObject::tr("状态 ") + QString::number(_loop%6));
+                    delay(3000);
+            }
+        } else if (straIndex == 3) {
+            while(_auto && _loop < 7) {
+                stateLabel->setText(QObject::tr("状态： ")+QString::number(_loop%7));
+                ReadInfo(":/data/Line"+QObject::tr("%1").arg(_loop++)+".txt",lineItems.size());
+                stateCom->addItem(QObject::tr("状态 ")+QString::number(_loop%7));
+                delay(3000);
+            }
         }
+        */
     }
 }
 
@@ -166,7 +185,6 @@ void SystemWidget::createControlFrame(int busnum,int linenum,int gennum)
 
     QGroupBox *startGroup = new QGroupBox(tr("控制"));
     startGroup->setAlignment(Qt::AlignCenter);
-    //startGroup->setLayout(startLayout);
     connect(startbutton, SIGNAL(released()), this, SLOT(slotStart()));
     //connect(clearbutton, SIGNAL(released()), this, SLOT(slotClear()));
     QFont font;
@@ -180,6 +198,7 @@ void SystemWidget::createControlFrame(int busnum,int linenum,int gennum)
     strategyCom->addItem(tr("裕度"));
     strategyCom->addItem(tr("重载"));
     strategyCom->addItem(tr("随机"));
+    strategyCom->addItem(tr("博弈"));
     QHBoxLayout *straLayout = new QHBoxLayout;
     straLayout->addWidget(strategLabel);
     straLayout->addWidget(strategyCom);
@@ -406,7 +425,7 @@ void SystemWidget::slotStrategy(){
 }
 void SystemWidget::slotStrategyMenu(int straIndex){
 
-    if(straIndex == 1){
+    if(straIndex == 4){
         QMessageBox msgBox;
         msgBox.setText("确认使用裕度优先攻击策略？");
         //msgBox.setInformativeText("Do you want to save your changes?");
@@ -418,15 +437,16 @@ void SystemWidget::slotStrategyMenu(int straIndex){
             strategyCom->setCurrentIndex(0);
             for(int i=1; i<7; ++i){
                 if(_auto){
-                    stateLabel->setText(QObject::tr("状态： ") + QString::number(_loop));
-                    ReadInfo( ":/Bus30_System/30_system_data/loop" + QObject::tr("%1").arg(_loop++) + ".txt", lineItems.size());
-                    stateCom->addItem(QObject::tr("状态 ") + QString::number(_loop - 1));
+                    stateLabel->setText(QObject::tr("状态： ") + QString::number(_loop%7));
+                    ReadInfo( ":/Bus30_System/30_system_data/loop" + QObject::tr("%1").arg((_loop++)%7) + ".txt", lineItems.size());
+                    int count = stateCom->count();
+                    if( count >= 0 && count < 7 )
+                        stateCom->addItem(QObject::tr("状态 ") + QString::number(_loop-1));
                     if( _loop == 4 ) {
                         QMessageBox msgBox;
                         msgBox.setText("对方策略发生改变，重新计算攻击点...");
                         msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
                         msgBox.setDefaultButton(QMessageBox::Ok);
-
                         int ret = msgBox.exec();
                     }
                     delay(3000);
@@ -461,9 +481,11 @@ void SystemWidget::slotStrategyMenu(int straIndex){
             strategyCom->setCurrentIndex(1);
             for(int i=1;i<6;++i){
                 if(_auto){
-                    stateLabel->setText(QObject::tr("状态： ")+QString::number(_loop));
-                    ReadInfo(":/data/loop"+QObject::tr("%1").arg(_loop++)+".txt",lineItems.size());
-                    stateCom->addItem(QObject::tr("状态 ")+QString::number(_loop));
+                    stateLabel->setText(QObject::tr("状态： ")+QString::number(_loop%6));
+                    ReadInfo(":/data/loop"+QObject::tr("%1").arg((_loop++)%6)+".txt",lineItems.size());
+                    int count = stateCom->count();
+                    if( count > 0 && count < 6 )
+                        stateCom->addItem(QObject::tr("状态 ")+QString::number(_loop -1 ));
                     delay(3000);
                 }else{
                     while(!_auto){
@@ -495,9 +517,11 @@ void SystemWidget::slotStrategyMenu(int straIndex){
             strategyCom->setCurrentIndex(2);
             for(int i=1;i<7;++i){
                 if(_auto){
-                    stateLabel->setText(QObject::tr("状态： ")+QString::number(_loop));
-                    ReadInfo(":/data/Line"+QObject::tr("%1").arg(_loop++)+".txt",lineItems.size());
-                    stateCom->addItem(QObject::tr("状态 ")+QString::number(i));
+                    stateLabel->setText(QObject::tr("状态： ")+QString::number(_loop%7));
+                    ReadInfo(":/data/Line"+QObject::tr("%1").arg((_loop++)%7)+".txt",lineItems.size());
+                    int count = stateCom->count();
+                    if( count > 0 && count < 7 )
+                        stateCom->addItem(QObject::tr("状态 ")+QString::number(_loop - 1));
                     delay(3000);
                 }else{
                     while(!_auto){
@@ -609,9 +633,6 @@ void SystemWidget::ReadInfo(QString filename,int length){
                             linetemp->setrunstate(true);
                         }
                         else if(linef==10000){
-                            //  int index=strategyCom->currentIndex();
-                            //  out<<"index :"<<index<<endl;
-
                             if(filename == ":/Bus30_System/30_system_data/loop1.txt"){
                                 flashboom = new FlashItem;
                                 flashboom_1 = new FlashItem;
@@ -644,7 +665,7 @@ void SystemWidget::ReadInfo(QString filename,int length){
                 linelabel->setText(QObject::tr("线路： ")+QString::number(count));
                 ++linenum;
             }
-            else if(linenum==2){
+            else if(linenum == 2){
                 QStringList v = data.split(QRegExp("\\s+"));
                 int size = v.size()-1;
                 int count = size;
