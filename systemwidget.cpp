@@ -62,7 +62,7 @@ SystemWidget::SystemWidget(QWidget *parent) :
     font.setBold(true);
     QPalette pa;
     pa.setColor(QPalette::WindowText,Qt::red);
-    QLabel* label = new QLabel;
+    label = new QLabel;
     label->setObjectName(QStringLiteral("label"));
     label->setFont(font);
     label->setAlignment(Qt::AlignCenter);
@@ -427,14 +427,15 @@ void SystemWidget::slotStrategyMenu(int straIndex){
 
     if(straIndex == 4){
         QMessageBox msgBox;
-        msgBox.setText("确认使用裕度优先攻击策略？");
+        msgBox.setText("确认使用博弈攻击策略？");
         //msgBox.setInformativeText("Do you want to save your changes?");
         msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
-        msgBox.setDefaultButton(QMessageBox::Ok);
+    //    msgBox.setDefaultButton(QMessageBox::Ok);
         int ret = msgBox.exec();
         switch (ret) {
         case QMessageBox::Ok:
             strategyCom->setCurrentIndex(0);
+            stralabel->setText(QObject::tr("博弈演示"));
             for(int i=1; i<7; ++i){
                 if(_auto){
                     stateLabel->setText(QObject::tr("状态： ") + QString::number(_loop%7));
@@ -443,11 +444,25 @@ void SystemWidget::slotStrategyMenu(int straIndex){
                     if( count >= 0 && count < 7 )
                         stateCom->addItem(QObject::tr("状态 ") + QString::number(_loop-1));
                     if( _loop == 4 ) {
+                        /*
                         QMessageBox msgBox;
-                        msgBox.setText("对方策略发生改变，重新计算攻击点...");
+                        msgBox.setIcon(QMessageBox::Information);
                         msgBox.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
-                        msgBox.setDefaultButton(QMessageBox::Ok);
+                        msgBox.setText("对方采取应急措施，正在重新计算攻击点......");
                         int ret = msgBox.exec();
+                        */
+                        QMessageBox *msgBox = new QMessageBox( QMessageBox::Information, "提示",
+                                   "对方采取应急措施，正在重新计算攻击点......", QMessageBox::Ok);
+                        QTimer *msgBoxCloseTimer = new QTimer( this );
+                        msgBoxCloseTimer->setInterval( 10000 );
+                        msgBoxCloseTimer->setSingleShot( true );
+                        connect( msgBoxCloseTimer, SIGNAL(timeout()), msgBox, SLOT(accept()) );
+                        msgBoxCloseTimer->start();
+                        msgBox->exec();
+
+                        QMessageBox *msgBox1 = new QMessageBox( QMessageBox::Information, "提示",
+                                   "计算完毕，以选中目标，准备再次攻击？", QMessageBox::Ok | QMessageBox::Cancel);
+                        msgBox1->exec();
                     }
                     delay(3000);
                 }else{
@@ -456,7 +471,7 @@ void SystemWidget::slotStrategyMenu(int straIndex){
                     }
                 }
             }
-            _loop = 1;
+            _loop = 0;
             break;
             QMessageBox::information(this,tr("Evaluation"),tr("影响评估： 59.25% ！"),QMessageBox::NoButton);
         case QMessageBox::Cancel:
@@ -479,6 +494,7 @@ void SystemWidget::slotStrategyMenu(int straIndex){
         switch (ret) {
         case QMessageBox::Ok:
             strategyCom->setCurrentIndex(1);
+            stralabel->setText(QObject::tr("重载策略攻击演示"));
             for(int i=1;i<6;++i){
                 if(_auto){
                     stateLabel->setText(QObject::tr("状态： ")+QString::number(_loop%6));
@@ -493,7 +509,7 @@ void SystemWidget::slotStrategyMenu(int straIndex){
                     }
                 }
             }
-            _loop = 1;
+            _loop = 0;
             QMessageBox::information(this,tr("Evaluation"),tr("影响评估： 93.13% ！"),QMessageBox::NoButton);
             break;
         case QMessageBox::Cancel:
@@ -515,6 +531,7 @@ void SystemWidget::slotStrategyMenu(int straIndex){
         switch (ret) {
         case QMessageBox::Ok:
             strategyCom->setCurrentIndex(2);
+            stralabel->setText(QObject::tr("随机策略攻击演示"));
             for(int i=1;i<7;++i){
                 if(_auto){
                     stateLabel->setText(QObject::tr("状态： ")+QString::number(_loop%7));
@@ -529,7 +546,7 @@ void SystemWidget::slotStrategyMenu(int straIndex){
                     }
                 }
             }
-            _loop = 1;
+            _loop = 0;
             QMessageBox::information(this,tr("Evaluation"),tr("影响评估： 38% ！"),QMessageBox::NoButton);
         case QMessageBox::Cancel:
             // Cancel was clicked
@@ -683,7 +700,7 @@ void SystemWidget::ReadInfo(QString filename,int length){
                             gentemp->setStart(true);
                             gentemp->setrunstate(true);
                             gentemp->setChuli(temp.toFloat());
-                            //   out << "chuli / genCap: " << temp.toFloat() <<"  " << gentemp->getgenCap() << endl;
+                            out << "chuli / genCap: " << temp.toFloat() <<"  " << gentemp->getgenCap() << endl;
                         }
                     }else{
                         gentemp->setgenCap(temp.toFloat());

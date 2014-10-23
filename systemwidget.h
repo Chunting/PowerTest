@@ -2,6 +2,7 @@
 #define SYSTEMWIDGET_H
 #include <QGraphicsItemAnimation>
 #include <QTimeLine>
+#include <QTimer>
 #include <QPolygon>
 #include <QMessageBox>
 #include <QHBoxLayout>
@@ -83,6 +84,7 @@ private:
     QLabel *warninglabel;
     QLabel *breakLabel;
     QLabel *stateLabel;
+    QLabel* label;
     bool pause;
 
     QVector<BusItem*> busItems;

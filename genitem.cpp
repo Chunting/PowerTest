@@ -28,7 +28,7 @@ void GenItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
      painter->setBrush(Qt::black);
      painter->setRenderHint((QPainter::Antialiasing));
      QFont font;
-     font.setPointSize(14);
+     font.setPointSize(7);
          font.setBold(true);
      int col=(int)abs((255*getratio()))%255;
       QTextStream out(stdout);
@@ -49,7 +49,10 @@ void GenItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, Q
     }
     painter->drawEllipse(QRectF(0,0,2*_radius, 2*_radius));
     painter->setFont(font);
-    painter->drawText(QRectF(0,0,2*_radius, 2*_radius),Qt::AlignCenter, "");
+    if( _chuli > 1 ) {
+        QString data = QString::number( getratio()*100, 'f', 1) + "%";
+        painter->drawText(QRectF(0,0,2*_radius, 2*_radius),Qt::AlignCenter,data);
+    }
 
 
 }
