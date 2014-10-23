@@ -706,8 +706,11 @@ void SystemWidget::ReadInfo(QString filename,int length){
                             } else if(filename==":/data/loop1.txt"){
                               //  flashboom = new FlashItem;
                               //  flashboom_1 = new FlashItem;
-                                flashboom->setPos(x1+5.5*Hbase,y1+5.15*Vbase);
+                                flashboom->setPos(x1+4.6*Hbase,y1+2.6*Vbase);
+                                flashboom_1 -> setPos( x1+0.8*Hbase,y1+4.25*Vbase );
                                 scene->addItem(flashboom);
+                                scene->addItem(flashboom_1);
+
                             }else if(filename==":/data/Line1.txt"){
                               //  flashboom = new FlashItem;
                               //  flashboom_1 = new FlashItem;
